@@ -3,974 +3,1014 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tulsa Career Path — Find Your Path. Start This Week.</title>
-  <meta name="description" content="A free interactive tool matching you to IT, data center, and tech career pathways in Tulsa and Oklahoma. Answer 4 questions, get your personalized action plan." />
-  <link href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600&f[]=cabinet-grotesk@700,800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <title>Tulsa &amp; Oklahoma Career Pathways Guide | Tech Partners LLC</title>
+  <meta name="description" content="A living index of IT, data center, cybersecurity, and skilled trades career pathways in Tulsa and Oklahoma — free and sponsored training, apprenticeships, scholarships, and job boards." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --red: #B71C2B;
+      --red-light: #FAE8EA;
+      --red-dark: #8B1420;
+      --charcoal: #1A1A1A;
+      --dark: #222222;
+      --body: #333333;
+      --muted: #666666;
+      --light: #F5F5F5;
+      --border: #E0E0E0;
+      --white: #FFFFFF;
+      --max: 860px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--body);
+      background: var(--white);
+    }
+
+    /* ── HEADER ── */
+    .site-header {
+      background: var(--charcoal);
+      border-bottom: 4px solid var(--red);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 12px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo-text {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .logo-badge {
+      background: var(--red);
+      color: white;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .logo-name {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+    }
+    .logo-name span { color: var(--red); }
+    .logo-sub {
+      font-size: 11px;
+      color: #999;
+      font-family: 'Inter', sans-serif;
+      font-weight: 400;
+    }
+    .header-cta {
+      background: var(--red);
+      color: white;
+      text-decoration: none;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .header-cta:hover { background: var(--red-dark); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--red);
+      padding: 64px 24px 56px;
+    }
+    .hero-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .hero-label {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 700;
+      color: white;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.85);
+      max-width: 600px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: white;
+      font-size: 13px;
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 600;
+    }
+
+    /* ── TOC NAV ── */
+    .toc-bar {
+      background: var(--charcoal);
+      padding: 0;
+      overflow-x: auto;
+    }
+    .toc-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      display: flex;
+      gap: 0;
+    }
+    .toc-item {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 12px;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 600;
+      padding: 13px 16px;
+      white-space: nowrap;
+      border-bottom: 3px solid transparent;
+      transition: all 0.15s;
+    }
+    .toc-item:hover { color: white; border-color: var(--red); }
+
+    /* ── LAYOUT ── */
+    .page-body {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── SECTION HEADERS ── */
+    .part-label {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 6px;
+      margin-top: 52px;
+    }
+    .section-rule {
+      border: none;
+      border-top: 2px solid var(--red);
+      margin-bottom: 20px;
+    }
+    h2.section-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 700;
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    h3.sub-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--red);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 28px 0 8px;
+    }
+    h4.mini-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin: 20px 0 6px;
+    }
+
+    p { margin-bottom: 14px; }
+
+    /* ── CALLOUT BOX ── */
+    .callout {
+      background: var(--red-light);
+      border-left: 5px solid var(--red);
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+    .callout strong { color: var(--charcoal); }
+    .callout a { color: var(--red); }
+
+    /* ── TABLES ── */
+    .table-wrap { overflow-x: auto; margin: 20px 0 28px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    thead tr { background: var(--red); }
+    thead th {
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      text-align: left;
+      padding: 11px 14px;
+      font-size: 13px;
+    }
+    tbody tr:nth-child(even) { background: var(--light); }
+    tbody tr:nth-child(odd)  { background: var(--white); }
+    tbody td {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      line-height: 1.5;
+    }
+    tbody td strong { color: var(--charcoal); }
+
+    /* ── BULLET LISTS ── */
+    ul.guide-list {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 20px;
+    }
+    ul.guide-list li {
+      padding: 6px 0 6px 22px;
+      position: relative;
+      border-bottom: 1px solid var(--border);
+      font-size: 15px;
+    }
+    ul.guide-list li:last-child { border-bottom: none; }
+    ul.guide-list li::before {
+      content: '▸';
+      color: var(--red);
+      position: absolute;
+      left: 0;
+      font-size: 12px;
+      top: 9px;
+    }
+
+    /* ── NEW BADGE ── */
+    .new-badge {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 10px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    /* ── PHASE BLOCKS ── */
+    .phase-block {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      margin: 16px 0;
+      overflow: hidden;
+    }
+    .phase-header {
+      background: var(--charcoal);
+      color: white;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      padding: 10px 18px;
+    }
+    .phase-body { padding: 4px 18px 12px; }
+
+    /* ── RESOURCE GRID ── */
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+      margin: 20px 0;
+    }
+    .resource-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .resource-card:hover { border-color: var(--red); box-shadow: 0 2px 8px rgba(183,28,43,0.1); }
+    .resource-card .rc-name {
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--charcoal);
+      margin-bottom: 6px;
+    }
+    .resource-card a {
+      color: var(--red);
+      font-size: 13px;
+      text-decoration: none;
+      display: block;
+      margin-top: 4px;
+    }
+    .resource-card a:hover { text-decoration: underline; }
+    .resource-card .rc-note { font-size: 13px; color: var(--muted); margin-top: 4px; }
+
+    /* ── ABOUT / CTA ── */
+    .about-section {
+      background: var(--charcoal);
+      color: white;
+      border-radius: 12px;
+      padding: 40px;
+      margin: 56px 0 0;
+    }
+    .about-section h2 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: white;
+    }
+    .about-section p { color: #ccc; margin-bottom: 14px; }
+    .about-section a.cta-link {
+      display: inline-block;
+      background: var(--red);
+      color: white;
+      text-decoration: none;
+      font-family: 'Work Sans', sans-serif;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 6px;
+      margin-top: 6px;
+      transition: background 0.2s;
+    }
+    .about-section a.cta-link:hover { background: var(--red-dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--light);
+      border-top: 3px solid var(--red);
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    footer a { color: var(--red); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .toc-bar { display: none; }
+      .header-cta { display: none; }
+      .about-section { padding: 28px 24px; }
+      .resource-grid { grid-template-columns: 1fr; }
+    }
+
+    a { color: var(--red); }
+
+    /* ── SCROLL OFFSET for sticky header ── */
+    [id] { scroll-margin-top: 90px; }
+
+    /* ── TP SERVICE CALLOUTS ── */
+    .tp-callout {
+      background: var(--charcoal);
+      border-left: 5px solid var(--red);
+      border-radius: 0 8px 8px 0;
+      padding: 18px 22px;
+      margin: 24px 0;
+    }
+    .tp-callout .tpc-label {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      color: var(--red);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .tp-callout .tpc-head {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .tp-callout .tpc-body {
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.55;
+      margin-bottom: 8px;
+    }
+    .tp-callout .tpc-cta {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red);
+      text-decoration: none;
+    }
+    .tp-callout .tpc-cta:hover { text-decoration: underline; }
+  </style>
 </head>
 <body>
 
-  <!-- ─── HEADER ──────────────────────────────────────────────────────── -->
-  <header class="site-header">
-    <div class="header-inner">
-      <a href="/" class="header-logo" aria-label="TulsaCareerPath home">
-        <svg width="34" height="34" viewBox="0 0 36 36" fill="none" aria-hidden="true">
-          <rect width="36" height="36" rx="8" fill="#C0202A"/>
-          <text x="18" y="25" text-anchor="middle" font-family="'Cabinet Grotesk',sans-serif" font-weight="800" font-size="15" fill="white">TP</text>
-        </svg>
-        <span class="header-logo-text">
-          <span class="logo-tulsa">Tulsa</span><span class="logo-path">CareerPath</span>
-        </span>
-      </a>
-      <nav class="header-nav" aria-label="Site sections">
-        <a href="#quiz">Find My Path</a>
-        <a href="#resources">Resources</a>
-        <a href="#onramp">On-Ramp</a>
-        <a href="#about">About</a>
-      </nav>
-      <button class="theme-toggle" data-theme-toggle aria-label="Toggle dark mode">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo-text">
+      <div class="logo-badge">TP</div>
+      <div>
+        <div class="logo-name"><span>Tech</span> Partners</div>
+        <div class="logo-sub">IT Staffing &amp; Recruitment Specialists</div>
+      </div>
+    </a>
+    <a href="https://techpartnersllc.com/contact-page/" class="header-cta" target="_blank" rel="noopener">Contact Us ↗</a>
+  </div>
+</header>
+
+<!-- TOC NAV -->
+<nav class="toc-bar" aria-label="Guide sections">
+  <div class="toc-inner">
+    <a href="#tracks" class="toc-item">Career Tracks</a>
+    <a href="#upskill" class="toc-item">Upskill Tracks</a>
+    <a href="#education" class="toc-item">Education &amp; Training</a>
+    <a href="#onramp" class="toc-item">Finding Your On-Ramp</a>
+    <a href="#workforce" class="toc-item">Workforce Initiatives</a>
+    <a href="#jobs" class="toc-item">Job Boards</a>
+    <a href="#contacts" class="toc-item">Key Contacts</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">Tech Partners LLC · Living Document · Updated July 2026</div>
+    <h1>Tulsa &amp; Oklahoma Career Pathways Guide</h1>
+    <p class="hero-sub">A living index of IT, data center, cybersecurity, AI/data, software, and skilled-trades career pathways in Tulsa and across Oklahoma — free and sponsored training, apprenticeships, scholarships, and where to find real openings.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Free &amp; Sponsored Training</span>
+      <span class="hero-tag">Apprenticeships</span>
+      <span class="hero-tag">Career Pathways</span>
+      <span class="hero-tag">Job Boards</span>
+      <span class="hero-tag">Veterans &amp; Career Changers</span>
     </div>
-  </header>
+  </div>
+</section>
 
-  <!-- ─── HERO ────────────────────────────────────────────────────────── -->
-  <section class="hero">
-    <div class="hero-inner">
-      <div class="hero-badge">Free · Tulsa &amp; Oklahoma · Updated June 2026</div>
-      <h1 class="hero-title">Find your career path.<br><span class="hero-accent">Start this week.</span></h1>
-      <p class="hero-sub">Tulsa is in the middle of a tech and data center boom. Answer 4 quick questions and get a personalized plan — local programs, certifications, salary ranges, and your exact next steps.</p>
-      <div class="hero-stats">
-        <div class="stat"><span class="stat-num">6</span><span class="stat-label">Career Tracks</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-num">14+</span><span class="stat-label">Local Programs</span></div>
-        <div class="stat-div"></div>
-        <div class="stat"><span class="stat-num">5 min</span><span class="stat-label">To Your Plan</span></div>
-      </div>
-      <a href="#quiz" class="btn-primary hero-cta">Find My Career Path →</a>
-      <p class="hero-footnote">A free resource from <a href="https://techpartnersllc.com" target="_blank" rel="noopener">Tech Partners LLC</a> — Tulsa's IT Recruitment Specialists</p>
+<!-- MAIN CONTENT -->
+<main class="page-body">
+
+  <p style="font-size:15px;color:var(--muted);border-left:3px solid var(--border);padding-left:14px;margin-bottom:8px;">This is a living document. As new programs, employers, and opportunities emerge, this guide will be updated. The goal is to surface what already exists but is fragmented — and make pathways obvious, accessible, and actionable.</p>
+
+  <div class="callout">
+    <strong>July 2026 update:</strong> Added the Oklahoma Manufacturing Alliance's expanded apprenticeship program (now including Digital and Data tracks), the Microsoft Cybersecurity Scholarship Program, and the OU Polytechnic Institute Cybersecurity Clinic. Refreshed America's Workforce Academy (Meta) details with the confirmed $115M investment and live waitlist link.
+  </div>
+
+  <!-- ================= CAREER TRACKS ================= -->
+  <div id="tracks" class="part-label">Part 1</div>
+  <hr class="section-rule" />
+  <h2 class="section-title">Career Tracks by Role Type</h2>
+
+  <h3 class="sub-title">Data Center Operations</h3>
+  <p>Data centers are the physical backbone of AI and cloud infrastructure. Oklahoma is adding significant data center capacity through Meta (East Tulsa), Google (Pryor and Stillwater), and more. These roles typically <strong>do not require a four-year degree</strong> and offer competitive starting salaries.</p>
+
+  <h4 class="mini-title">Typical Entry Salaries in Oklahoma (2026)</h4>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Level</th><th>Salary Range</th></tr></thead>
+      <tbody>
+        <tr><td>Entry-Level Technician</td><td>$52,900 – $64,100</td></tr>
+        <tr><td>Mid-Career (5-10 yrs)</td><td>$64,100 – $76,300</td></tr>
+        <tr><td>Senior Specialist</td><td>$76,300+</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:13px;color:var(--muted);margin-top:-14px;">Source: <a href="https://dcgeeks.com/data-center-salary-by-state-comparison/" target="_blank" rel="noopener">DC Geeks Data Center Salary Report 2026</a></p>
+
+  <h4 class="mini-title">Key Roles</h4>
+  <ul class="guide-list">
+    <li><strong>Data Center Technician I/II</strong> — Hardware installation, rack/stack, break-fix, monitoring</li>
+    <li><strong>Critical Facilities Technician</strong> — MEP (mechanical, electrical, plumbing) operations and maintenance</li>
+    <li><strong>Data Center Operations Manager</strong> — Shift supervision, incident management, vendor coordination</li>
+    <li><strong>Commissioning Agent</strong> — Testing and verification of electrical/mechanical systems during buildout</li>
+  </ul>
+
+  <h4 class="mini-title">How to Get In</h4>
+  <ul class="guide-list">
+    <li>Tulsa Tech programs in IT, Network Support, and Enterprise Technologies — entry point for tech ops roles</li>
+    <li>America's Workforce Academy (Meta/AWA) — skilled trades fast-track directly tied to data center construction</li>
+    <li>Electrical Training Alliance — apprenticeship path into critical facilities roles</li>
+  </ul>
+
+  <h3 class="sub-title">Information Technology (IT) Infrastructure</h3>
+  <p>These roles sit at the intersection of networking, systems, and security. Strong demand from both enterprise employers and data center operators in Oklahoma.</p>
+  <h4 class="mini-title">Key Roles</h4>
+  <ul class="guide-list">
+    <li><strong>Network Engineer / Network Administrator</strong> — Routing, switching, LAN/WAN, SD-WAN</li>
+    <li><strong>Systems Administrator</strong> — Windows/Linux server management, virtualization (VMware, Hyper-V)</li>
+    <li><strong>Cloud Engineer (Azure / AWS / GCP)</strong> — Cloud architecture, IaC, hybrid environments</li>
+    <li><strong>DevOps / Platform Engineer</strong> — CI/CD pipelines, containerization (Docker/Kubernetes), automation</li>
+    <li><strong>IT Support Technician / Help Desk</strong> — Tier 1-3 support, endpoint management, ITSM</li>
+  </ul>
+  <h4 class="mini-title">Typical Certifications That Open Doors</h4>
+  <ul class="guide-list">
+    <li>CompTIA A+, Network+, Security+</li>
+    <li>Cisco CCNA</li>
+    <li>Microsoft Azure Administrator (AZ-104)</li>
+    <li>AWS Cloud Practitioner / Solutions Architect</li>
+    <li>Google IT Support Professional Certificate (free via OSU/OU partnership)</li>
+  </ul>
+
+  <h3 class="sub-title">Cybersecurity</h3>
+  <p>One of the highest-demand fields in Oklahoma and nationally. The TCC Cyber Skills Center is the most accessible accelerated on-ramp in Tulsa.</p>
+  <h4 class="mini-title">Key Roles</h4>
+  <ul class="guide-list">
+    <li><strong>Security Operations Center (SOC) Analyst</strong> — Threat monitoring, incident response, SIEM tools</li>
+    <li><strong>Information Security Analyst</strong> — Risk assessment, compliance, vulnerability management</li>
+    <li><strong>Cybersecurity Engineer</strong> — Network security, firewall/IDS/IPS, zero trust architecture</li>
+    <li><strong>Penetration Tester / Ethical Hacker</strong> — Offensive security, red team operations</li>
+  </ul>
+  <div class="callout">
+    <strong>Starting point for beginners:</strong> <a href="https://www.cyberskillscenter.org" target="_blank" rel="noopener">TCC Cyber Skills Center</a> — 24-week, no-cost bootcamp in partnership with Google and the State of Oklahoma
+  </div>
+
+  <h3 class="sub-title">Skilled Trades (Data Center Construction &amp; Facilities)</h3>
+  <p>Oklahoma's data center construction boom is creating immediate demand for licensed and apprentice-level tradespeople. These are well-paying, union-backed careers.</p>
+  <h4 class="mini-title">Key Roles</h4>
+  <ul class="guide-list">
+    <li><strong>Electrician / Journeyman Electrician</strong> — Primary feeder role for data center MEP work</li>
+    <li><strong>HVAC/Mechanical Technician</strong> — Cooling systems critical to data center uptime</li>
+    <li><strong>Low-Voltage / Structured Cabling Technician</strong> — Fiber, copper, and network infrastructure installation</li>
+    <li><strong>Plumber / Pipefitter</strong> — Liquid cooling systems, water distribution</li>
+    <li><strong>Welder / Ironworker</strong> — Structural buildout during data center construction phases</li>
+  </ul>
+  <h4 class="mini-title">Path to Entry</h4>
+  <ul class="guide-list">
+    <li><a href="https://www.electricaltrainingalliance.org" target="_blank" rel="noopener">Electrical Training Alliance</a> — Registered DOL apprenticeships; earn while you learn (starting ~$17.71/hr, no tuition)</li>
+    <li>America's Workforce Academy (Meta/AWA) — Free 4-week intensive trades fast-track with guaranteed job offer at completion</li>
+    <li><strong>Oklahoma Manufacturing Alliance — Registered Apprenticeship Expansion</strong><span class="new-badge">New</span> — Now includes Engineering, Digital, and Data tracks alongside traditional trades</li>
+  </ul>
+
+  <div class="tp-callout">
+    <div class="tpc-label">New · Announced June 2026</div>
+    <div class="tpc-head">Oklahoma Manufacturing Alliance — Registered Apprenticeship Expansion</div>
+    <p class="tpc-body">The Institute for Advanced Composites Manufacturing Innovation (IACMI) announced a major expansion of the Oklahoma Manufacturing Alliance's Registered Apprenticeship Program, funded through the U.S. Department of Defense's Office of Industrial Base Policy and delivered in partnership with Tulsa Innovation Labs. Unlike most trades apprenticeships in this guide, this expansion explicitly adds <strong style="color:white">Engineering, Digital, and Data tracks</strong> alongside traditional advanced-manufacturing roles — putting it squarely in IT/data territory, not just the shop floor.</p>
+    <p class="tpc-body" style="margin-bottom:2px;"><strong style="color:white">What it is:</strong> DOL-accredited Registered Apprenticeship Program targeting 180–210 new placements in advanced manufacturing, autonomous systems, drone technology, plus Engineering, Digital, and Data tracks. Employers are being recruited now for <strong style="color:white">September 2026</strong> cohort starts.</p>
+    <p class="tpc-body"><strong style="color:white">Who it's for:</strong> Employers building entry-level digital/data talent pipelines, and job seekers wanting an earn-while-you-learn path into engineering/data roles without a four-year degree.</p>
+    <a href="https://www.okalliance.com/workforce/registered-apprenticeships/" class="tpc-cta" target="_blank" rel="noopener">Oklahoma Manufacturing Alliance — Registered Apprenticeships &rarr;</a><br>
+    <a href="https://www.tulsainnovationlabs.com/initiatives/registered-apprentice-program" class="tpc-cta" target="_blank" rel="noopener">Tulsa Innovation Labs — Registered Apprentice Program &rarr;</a>
+  </div>
+
+  <h3 class="sub-title">AI, Data &amp; Analytics</h3>
+  <p>Emerging but fast-growing category in Oklahoma's tech ecosystem — supported by state-level investment in AI literacy and university partnerships with Google.</p>
+  <h4 class="mini-title">Key Roles</h4>
+  <ul class="guide-list">
+    <li><strong>Data Analyst</strong> — Business intelligence, dashboards, SQL, visualization tools</li>
+    <li><strong>Data Engineer</strong> — ETL pipelines, data warehousing, cloud data platforms</li>
+    <li><strong>Machine Learning Engineer</strong> — Model development, deployment, MLOps</li>
+    <li><strong>AI/Automation Specialist</strong> — Process automation, LLM integration, prompt engineering</li>
+  </ul>
+  <div class="callout">
+    <strong>Starting point:</strong> <a href="https://www.tulsacc.edu/academics/workforce-continuing-education/workforce-trainings/cyber-skills-center" target="_blank" rel="noopener">TCC Cyber Skills Center – AI Track</a> and <a href="https://www.cyberskillscenter.org" target="_blank" rel="noopener">Data Analytics Track</a> — both 24-week, no-cost pathways
+  </div>
+
+  <h3 class="sub-title">Software Development</h3>
+  <p>For those pursuing software engineering as a primary career path. Tulsa has a strong anchor in this category thanks to Atlas School.</p>
+  <h4 class="mini-title">Key Roles</h4>
+  <ul class="guide-list">
+    <li><strong>Software Engineer / Full-Stack Developer</strong> — Frontend, backend, or full-stack web development</li>
+    <li><strong>Mobile App Developer</strong> — iOS / Android / React Native</li>
+    <li><strong>DevOps / Site Reliability Engineer (SRE)</strong> — Infrastructure automation, reliability, deployment pipelines</li>
+  </ul>
+
+  <!-- ================= UPSKILL TRACKS ================= -->
+  <div id="upskill" class="part-label">Part 2</div>
+  <hr class="section-rule" />
+  <h2 class="section-title">Upskill Tracks for Working Professionals</h2>
+  <p>Already employed in IT or a related field? These programs are designed to layer new credentials onto existing experience without quitting your job.</p>
+
+  <h3 class="sub-title">UpskillOK — Microcredentials Statewide</h3>
+  <p>Oklahoma's statewide microcredential platform connects working professionals with short-term, skills-based programs at colleges and universities across the state. Programs are stackable and many are available online.</p>
+  <ul class="guide-list">
+    <li><strong>Platform:</strong> <a href="https://upskillok.org" target="_blank" rel="noopener">UpskillOK.org</a></li>
+    <li><strong>Relevant tracks:</strong> Computer Networking, Computer Programming, IT Fundamentals, AI Literacy, Cybersecurity</li>
+    <li><strong>Format:</strong> Weeks to months; online, hybrid, and in-person options</li>
+    <li><strong>Cost:</strong> Varies; some programs are no-cost or under $500</li>
+    <li><strong>State backing:</strong> Oklahoma State Regents awarded $150,000 in 2025 grants to accelerate AI-focused microcredential development</li>
+  </ul>
+
+  <h3 class="sub-title">TCC Cyber Skills Center — Upskilling Track</h3>
+  <p>The Cyber Skills Center is explicitly designed for both <strong>career changers and upskillers</strong>. Evening cohorts allow you to keep your current job.</p>
+  <ul class="guide-list">
+    <li><strong>Tracks:</strong> Cybersecurity, Data Analytics, Artificial Intelligence</li>
+    <li><strong>Duration:</strong> 24 weeks, part-time evenings</li>
+    <li><strong>Cost:</strong> No cost (funded by Google + State of Oklahoma)</li>
+    <li><strong>Eligibility:</strong> Open to working adults; priority to women, people of color, and lower-income professionals</li>
+    <li><strong>Location:</strong> Tulsa Community College</li>
+    <li><strong>Apply:</strong> <a href="https://www.cyberskillscenter.org" target="_blank" rel="noopener">cyberskillscenter.org</a> | <a href="https://www.tulsacc.edu/academics/workforce-continuing-education/workforce-trainings/cyber-skills-center" target="_blank" rel="noopener">tulsacc.edu</a></li>
+  </ul>
+
+  <h3 class="sub-title">Google Career Certificates — Free via OSU/OU Partnership</h3>
+  <p>Through Google's AI for Education Accelerator, all OSU and OU students, faculty, and staff have no-cost access to:</p>
+  <ul class="guide-list">
+    <li>Google Career Certificates (IT Support, Data Analytics, Cybersecurity, Project Management, UX Design)</li>
+    <li>Google AI training courses</li>
+    <li>Free Google AI Pro plan (12 months)</li>
+    <li>Job search support</li>
+  </ul>
+  <p><strong>Also available statewide:</strong> All Oklahoma-based college students now have access to the free Google AI Pro plan and AI training.</p>
+  <ul class="guide-list">
+    <li><strong>OSU:</strong> <a href="https://news.okstate.edu/articles/communications/2025/oklahoma_state_university_joins_google_ai_for_education_accelerator.html" target="_blank" rel="noopener">news.okstate.edu</a></li>
+    <li><strong>OSU-Tulsa:</strong> Weekly support sessions for Google IT Support Professional Certificate completion</li>
+  </ul>
+
+  <h3 class="sub-title">OSUIT — Electrical &amp; Electronics Technology Program</h3>
+  <p>For experienced professionals in electrical or industrial fields who want to align to data center work supporting Google's Oklahoma facilities.</p>
+  <ul class="guide-list">
+    <li><strong>Credentials:</strong> Stackable microcredentials in industrial electrical systems, electric motor controls, PLC fundamentals, instrumentation</li>
+    <li><strong>Partners:</strong> MidAmerica Industrial Park, Northeast Tech, Google</li>
+    <li><strong>Website:</strong> <a href="https://www.osuit.edu" target="_blank" rel="noopener">osuit.edu</a></li>
+    <li><strong>Note:</strong> Directly aligned to Google's Pryor and Stillwater data center workforce needs</li>
+  </ul>
+
+  <h3 class="sub-title">Tulsa Tech — Workforce Training &amp; Development</h3>
+  <p>Short-term and customized IT training for working professionals and employer teams.</p>
+  <ul class="guide-list">
+    <li><strong>Offerings:</strong> Computer Information Systems, Microsoft Training, Cisco CCNA prep, Network+, Security+</li>
+    <li><strong>Format:</strong> Evening classes, blended online/lab</li>
+    <li><strong>Website:</strong> <a href="https://tulsatech.edu/workforce-training-and-development/" target="_blank" rel="noopener">tulsatech.edu/workforce-training-and-development</a></li>
+  </ul>
+
+  <h3 class="sub-title">Oklahoma CareerTech — Training for Industry Program (TIP)</h3>
+  <p>Employer-sponsored or individual technical training across 29 technology centers and 58 campuses statewide. For professionals seeking no-cost or low-cost technical upskilling aligned to specific employer needs.</p>
+  <ul class="guide-list">
+    <li><strong>Relevant areas:</strong> Computer &amp; Software Training, PLC/industrial controls, management and supervision</li>
+    <li><strong>Website:</strong> <a href="https://oklahoma.gov/careertech" target="_blank" rel="noopener">oklahoma.gov/careertech</a></li>
+    <li><strong>Note:</strong> Customized training can be delivered at your employer's facility</li>
+  </ul>
+
+  <div class="tp-callout">
+    <div class="tpc-label">New for the 2026 Cycle · Rolling Applications</div>
+    <div class="tpc-head">Microsoft Cybersecurity Scholarship Program <span class="new-badge">New</span></div>
+    <p class="tpc-body">A no-essay, no-GPA-requirement scholarship for community and technical college students statewide — via the Last Mile Education Fund, and directly applicable to TCC, Tulsa Tech, and any Oklahoma CareerTech program with a cybersecurity or tech track.</p>
+    <p class="tpc-body" style="margin-bottom:2px;"><strong style="color:white">Eligible programs:</strong> Certificate, associate, or applied bachelor's degree in cybersecurity or adjacent fields (IT, computer science, data systems); bootcamp and certification-program students also qualify.</p>
+    <p class="tpc-body"><strong style="color:white">Award:</strong> $500 scholarship or subsidized certification exam costs, plus free LinkedIn Premium, GitHub Global Campus access, and mentorship through Microsoft's Global Mentors Initiative. U.S. residents, 18+, currently enrolled, LinkedIn profile with photo required.</p>
+    <a href="https://www.lastmile-ed.org/microsoftcybersecurityscholarship" class="tpc-cta" target="_blank" rel="noopener">lastmile-ed.org/microsoftcybersecurityscholarship &rarr;</a><br>
+    <a href="https://bigfuture.collegeboard.org/scholarships/the-microsoft-cybersecurity-scholarship-program" class="tpc-cta" target="_blank" rel="noopener">Full eligibility details (BigFuture/College Board) &rarr;</a>
+  </div>
+
+  <!-- ================= EDUCATION & TRAINING ================= -->
+  <div id="education" class="part-label">Part 3</div>
+  <hr class="section-rule" />
+  <h2 class="section-title">Education &amp; Accelerated Training</h2>
+
+  <h3 class="sub-title">America's Workforce Academy (AWA) — Meta</h3>
+  <p style="font-size:13px;color:var(--muted);margin-top:-8px;">Launched June 2026 | National program with local relevance in Tulsa</p>
+  <p>Meta launched the America's Workforce Academy in response to massive demand (35,000 applications in 7 days) for skilled trades workers to build its data center infrastructure — including the new <strong>AI-optimized data center in East Tulsa</strong> that broke ground in April 2026.</p>
+
+  <h4 class="mini-title">What It Is</h4>
+  <p>A nationwide, fast-track training program for skilled trades — <strong>zero cost to participants</strong>. Meta funds everything: tuition, airfare, lodging, and a daily stipend during training.</p>
+
+  <h4 class="mini-title">Who It's For</h4>
+  <ul class="guide-list">
+    <li>Veterans, recent graduates, career changers, and new entrants to the trades</li>
+    <li>No prior experience required</li>
+    <li>Open to qualified applicants from all 50 states</li>
+  </ul>
+
+  <h4 class="mini-title">What You Get</h4>
+  <ul class="guide-list">
+    <li>Intensive skills training in electrical work, mechanical systems, plumbing, and related trades</li>
+    <li>National Center for Construction Education and Research (NCCER) certification</li>
+    <li>U.S. Workforce Certificate</li>
+    <li><strong>Guaranteed job offer</strong> through a Meta contractor partner upon graduation</li>
+  </ul>
+
+  <p><strong>Pilot Launch (2026):</strong> Louisiana, Ohio, Indiana, and Texas — Oklahoma expansion anticipated as Meta's East Tulsa data center buildout accelerates.</p>
+
+  <div class="callout">
+    <strong>July 2026 update:</strong><span class="new-badge">New</span> Meta has confirmed a <strong>$115 million</strong> commitment behind AWA — a larger figure than was public when this guide was first drafted. Applications are not yet open for the general public, but the <strong>waitlist is now live</strong>. Oklahoma residents are eligible to apply once open — Meta covers airfare and lodging to whichever pilot site an applicant is assigned, so distance from Tulsa is not a barrier.<br><br>
+    <strong>Apply / Learn More:</strong> <a href="https://cbreglobal.avature.net/AmericasWorkforceAcademyForm" target="_blank" rel="noopener">Join the waitlist</a> · <a href="https://about.fb.com/news/2026/06/americas-workforce-academy-free-skilled-trade-training/amp/" target="_blank" rel="noopener">Meta Newsroom overview</a><br>
+    <strong>Partnerships contact:</strong> awapartnerships@meta.com
+  </div>
+
+  <h3 class="sub-title">Meta + Tulsa Tech + TCC — Data Center Workforce Lab</h3>
+  <p>In connection with the East Tulsa data center, Meta is partnering with <strong>Tulsa Tech</strong> and <strong>Tulsa Community College</strong> to create a cross-institutional workforce development program and learning lab targeting <strong>200+ graduates per year</strong> in trades and technical skills for data center operations.</p>
+  <ul class="guide-list">
+    <li><strong>Partners:</strong> Meta, Tulsa Tech, Tulsa Community College</li>
+    <li><strong>Target output:</strong> 200+ graduates/year</li>
+    <li><strong>Focus:</strong> Trades and technical skills for data center operations and maintenance</li>
+    <li><strong>Status:</strong> Program in development in conjunction with 2026 data center buildout</li>
+  </ul>
+
+  <h3 class="sub-title">Atlas School — Software Engineering</h3>
+  <p style="font-size:13px;color:var(--muted);margin-top:-8px;">Formerly Holberton Tulsa | Downtown Tulsa</p>
+  <p>A project-based, peer-learning software engineering school for adults looking to break into software development. No experience required — just a high school diploma or GED.</p>
+  <ul class="guide-list">
+    <li><strong>Duration:</strong> 20 months</li>
+    <li><strong>Curriculum:</strong> Software programming foundation + specialization (Machine Learning, Linux/Advanced Algorithms, or Full-Stack Web Development)</li>
+    <li><strong>Model:</strong> Project-based and peer-based learning — no traditional lectures</li>
+    <li><strong>Age Requirement:</strong> 18+ with HS diploma or equivalent</li>
+    <li><strong>Cost Model:</strong> Custom financing agreement — students pay 10% of income for 3.5 years after landing a job (total: $20,000-$30,000). No payment until employed.</li>
+    <li><strong>Location:</strong> 15 N Cheyenne Ave, Tulsa, OK 74103</li>
+    <li><strong>Contact:</strong> (918) 392-5530 · admissions@atlasschool.com · <a href="https://atlasschool.com" target="_blank" rel="noopener">atlasschool.com</a></li>
+  </ul>
+
+  <h3 class="sub-title">TCC Cyber Skills Center — Accelerated Bootcamp</h3>
+  <p>A 24-week, no-cost accelerated bootcamp at Tulsa Community College, funded by Google and the State of Oklahoma. Designed to move both beginners and professionals into the workforce quickly.</p>
+  <ul class="guide-list">
+    <li><strong>Cybersecurity</strong> — Threat analysis, network defense, incident response</li>
+    <li><strong>Data Analytics</strong> — Data interpretation, visualization, actionable insights</li>
+    <li><strong>Artificial Intelligence</strong> — Foundational and advanced AI skills</li>
+  </ul>
+  <p style="font-size:14px;">Duration: 24 weeks, part-time evenings · Cost: No cost · Optional apprenticeship pathway through SkillStorm after graduation · Retrain Tulsa provides wraparound support · <a href="https://www.cyberskillscenter.org" target="_blank" rel="noopener">cyberskillscenter.org</a></p>
+
+  <h3 class="sub-title">Tulsa Tech — Full-Time Career Training</h3>
+  <p>60+ programs completable in 1-4 semesters across multiple campuses. IT-relevant programs:</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Program</th><th>Focus</th></tr></thead>
+      <tbody>
+        <tr><td>Computer Repair &amp; Network Support</td><td>Hardware, OS, basic networking</td></tr>
+        <tr><td>Enterprise Network Technologies</td><td>Cisco, routing/switching, enterprise systems</td></tr>
+        <tr><td>IT Networking Systems</td><td>LAN/WAN, network administration</td></tr>
+        <tr><td>Server Administration</td><td>Windows Server, Linux, virtualization</td></tr>
+        <tr><td>Cyber Security / Forensics</td><td>Defensive security, digital forensics</td></tr>
+        <tr><td>Mobile App Development</td><td>iOS/Android development fundamentals</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p><a href="https://tulsatech.edu/full-time-programs/" target="_blank" rel="noopener">tulsatech.edu/full-time-programs</a></p>
+
+  <h3 class="sub-title">Electrical Training Alliance — Apprenticeships</h3>
+  <p>Google's $9B Oklahoma investment includes funding the Electrical Training Alliance to expand Oklahoma's electrician pipeline by 135% by 2030. These are <strong>earn-while-you-learn, federally registered apprenticeships</strong> — no tuition.</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Program</th><th>Duration</th><th>Starting Pay</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Inside Wireman Apprenticeship</td><td>4 years</td><td>~$17.71/hr</td><td>HS diploma/GED + aptitude test required</td></tr>
+        <tr><td>Telecommunications Apprenticeship</td><td>3 years</td><td>~$17.71/hr</td><td>HS diploma/GED + aptitude test required</td></tr>
+        <tr><td>Construction Electrician (CE) Program</td><td>8 levels</td><td>~$16/hr</td><td>No experience or test required to start</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:14px;">8,000 hrs OJT (apprenticeship) / 12,000 hrs OJT (CE program) · DOL Journey-Level Electrician Certification upon completion · <a href="https://www.electricaltrainingalliance.org" target="_blank" rel="noopener">electricaltrainingalliance.org</a> · Western Oklahoma JATC: <a href="https://etawok.org" target="_blank" rel="noopener">etawok.org</a></p>
+
+  <!-- ================= ON-RAMP ================= -->
+  <div id="onramp" class="part-label">Part 4</div>
+  <hr class="section-rule" />
+  <h2 class="section-title">Finding Your On-Ramp</h2>
+  <p><em>Wherever you are in life — student, career changer, veteran, or working professional — there is a path into Oklahoma's tech and trades workforce. This section maps entry points by life stage.</em></p>
+
+  <h3 class="sub-title">K-12: Discover → Explore → Specialize</h3>
+  <p>Oklahoma's career education system gives students a head start long before graduation.</p>
+  <h4 class="mini-title">Discover (Elementary School)</h4>
+  <p>Start with curiosity — basic digital citizenship, typing, and logic/coding games. Oklahoma public schools follow state computer science standards that introduce these concepts early. Students and families can use <a href="https://www.okcareerguide.org" target="_blank" rel="noopener">OK Career Guide</a> to explore careers at any age.</p>
+  <h4 class="mini-title">Explore (Middle School)</h4>
+  <p>Introduce yourself to computer science or STEM electives: block-based coding, robotics, introductory web design. Use <a href="https://www.okcareerguide.org" target="_blank" rel="noopener">OK Career Guide</a> and <a href="https://www.okcollegestart.org" target="_blank" rel="noopener">OKcollegestart.org</a> to take free interest assessments.</p>
+  <h4 class="mini-title">Specialize (High School)</h4>
+  <p>Choose a focus pathway — IT support, networking, web &amp; digital media, programming, or skilled trades — through Oklahoma's IT and Career &amp; Technology Education (CareerTech) cluster plans.</p>
+  <ul class="guide-list">
+    <li><strong>Tulsa Tech</strong> serves Tulsa County high school students tuition-free. Programs in IT Networking, Cyber Security, Computer Repair, Enterprise Networks, and more are available during the school day or as evening programs.</li>
+    <li><strong>Statewide CareerTech:</strong> Oklahoma has 29 CareerTech technology centers serving all 77 counties, tuition-free for in-district high school students. Find your local center at <a href="https://oklahoma.gov/careertech" target="_blank" rel="noopener">oklahoma.gov/careertech</a>.</li>
+    <li><strong>OKcollegestart.org</strong> helps high school students build education plans, search for scholarships, and connect career interests to specific college and CareerTech programs.</li>
+  </ul>
+
+  <h3 class="sub-title">After High School: Stackable Pathways to a Career</h3>
+  <p>Oklahoma's postsecondary system is designed to be stackable — you don't have to choose between working and earning credentials.</p>
+  <h4 class="mini-title">Step 1 — Free or Low-Cost CareerTech Training</h4>
+  <p>If you didn't complete a CareerTech program in high school, you can enroll as an adult. Tulsa Tech and CareerTech centers statewide offer evening and weekend options. Many are low-cost or eligible for WIOA funding through <a href="https://oklahomaworks.gov" target="_blank" rel="noopener">Oklahoma Works</a>.</p>
+  <h4 class="mini-title">Step 2 — Associate (AAS) or Bachelor of Technology (BT)</h4>
+  <ul class="guide-list">
+    <li><strong>OSU-OKC</strong> — AAS in Information Technology (networking, Microsoft systems, IT support tracks)</li>
+    <li><strong>OSUIT</strong> — BT in IT with tracks in Cybersecurity, Network Infrastructure, and Software Development</li>
+    <li><strong>Tulsa Community College (TCC)</strong> — AAS pathways plus the free Cyber Skills Center</li>
+  </ul>
+  <h4 class="mini-title">Step 3 — Entry-Level Jobs in Tulsa and Oklahoma</h4>
+  <p>Your combination of CareerTech certifications and AAS/BT credentials positions you for roles like IT Support Specialist, Junior Network Technician, SOC Analyst, Data Center Technician, or Journeyman Electrician.</p>
+
+  <h3 class="sub-title">Veterans &amp; Mid-Career Professionals</h3>
+  <p>If you've served in the military or spent years in another industry, you likely have more transferable skills than you realize. Leadership, troubleshooting under pressure, logistics, communications, and systems thinking all map directly to IT, cybersecurity, and operations roles.</p>
+  <ul class="guide-list">
+    <li><strong>GI Bill-eligible programs at Tulsa Tech:</strong> Enterprise Network Technologies, Cyber Security/Forensics, and more. Confirm eligibility at <a href="https://www.benefits.va.gov/GIBILL/" target="_blank" rel="noopener">benefits.va.gov/GIBILL</a></li>
+    <li><strong>OSUIT</strong> — Multiple BT programs are VA-eligible</li>
+    <li><strong>TCC Cyber Skills Center</strong> — Free 24-week evening program; no GI Bill required</li>
+    <li><strong>America's Workforce Academy (Meta/AWA)</strong> — Explicitly designed for veterans entering skilled trades</li>
+    <li><strong>WIOA funding</strong> via <a href="https://oklahomaworks.gov" target="_blank" rel="noopener">Oklahoma Works</a> for eligible job seekers</li>
+  </ul>
+
+  <h3 class="sub-title">Free Oklahoma Career Tools</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Tool</th><th>What It Does</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td><strong>OK Career Guide</strong></td><td>Career exploration, interest assessments, occupation profiles</td><td><a href="https://www.okcareerguide.org" target="_blank" rel="noopener">okcareerguide.org</a></td></tr>
+        <tr><td><strong>OKcollegestart.org</strong></td><td>College/career planning, scholarship search, financial aid tools</td><td><a href="https://www.okcollegestart.org" target="_blank" rel="noopener">okcollegestart.org</a></td></tr>
+        <tr><td><strong>CareerOneStop</strong></td><td>Federal career platform (U.S. DOL) — interest assessment, wage data, training finder</td><td><a href="https://www.careeronestop.org" target="_blank" rel="noopener">careeronestop.org</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ================= WORKFORCE INITIATIVES ================= -->
+  <div id="workforce" class="part-label">Part 5</div>
+  <hr class="section-rule" />
+  <h2 class="section-title">Workforce Initiatives &amp; Ecosystem Partners</h2>
+
+  <h3 class="sub-title">Tulsa Innovation Labs (TIL)</h3>
+  <p>The primary workforce and innovation intermediary in Tulsa's tech ecosystem, backed by the George Kaiser Family Foundation. TIL connects employers, educational institutions, and community organizations to align training with industry demand.</p>
+  <ul class="guide-list">
+    <li><strong>Tulsa Career Advancement Program (T-CAP)</strong> — Upskills new hires and existing workers in autonomous systems specialties. <a href="https://www.tulsainnovationlabs.com/initiatives/tulsa-career-advancement-program" target="_blank" rel="noopener">Learn more</a></li>
+    <li><strong>Workforce Intermediary</strong> — Connector between industry and education. <a href="https://www.tulsainnovationlabs.com/initiatives/workforce-intermediary" target="_blank" rel="noopener">Learn more</a></li>
+    <li><strong>Cyber Skills Center (TCC)</strong> — Co-funded by TIL; scholarships and funding for the 24-week bootcamp cohorts</li>
+    <li><strong>Doctoral Fellowship in Cyber</strong> — Advanced research pipeline</li>
+    <li><strong>Coding Academy</strong> — Early-stage software development pipeline</li>
+  </ul>
+  <p><a href="https://www.tulsainnovationlabs.com" target="_blank" rel="noopener">tulsainnovationlabs.com</a></p>
+
+  <h3 class="sub-title">Oklahoma Works</h3>
+  <p>The state's primary workforce system — connects job seekers to training programs, apprenticeships, and upskilling opportunities. Coordinates with CareerTech, TCC, Tulsa Tech, and employer-sponsored initiatives.</p>
+  <p><a href="https://oklahomaworks.gov" target="_blank" rel="noopener">oklahomaworks.gov</a></p>
+
+  <h3 class="sub-title">Retrain Tulsa</h3>
+  <p>A workforce partner providing wraparound services for adult learners returning to education or transitioning careers — transportation, childcare navigation, coaching, and referral support. Active partner with the TCC Cyber Skills Center.</p>
+
+  <h3 class="sub-title">SkillStorm</h3>
+  <p>Provides an optional <strong>apprenticeship pathway</strong> for Cyber Skills Center graduates — hands-on employer-based experience to bridge from training to full-time employment.</p>
+
+  <h3 class="sub-title">Upskill Oklahoma</h3>
+  <p>Oklahoma State Regents' statewide microcredential platform. Aggregates short-term, stackable credential programs from colleges and universities across the state. Focuses on employer-aligned skills for the current and future workforce.</p>
+  <p><a href="https://upskillok.org" target="_blank" rel="noopener">upskillok.org</a></p>
+
+  <div class="tp-callout">
+    <div class="tpc-label">New · Launched June 2026 · $1M Google Grant</div>
+    <div class="tpc-head">OU Polytechnic Institute (OUPI) Cybersecurity Clinic <span class="new-badge">New</span></div>
+    <p class="tpc-body">A new employer- and community-facing initiative rather than an individual training program — but worth tracking as a networking and talent-pipeline touchpoint, since it puts OUPI cybersecurity students directly in front of local organizations.</p>
+    <p class="tpc-body" style="margin-bottom:2px;"><strong style="color:white">What it is:</strong> Free, faculty-supervised cybersecurity risk assessments for small manufacturers, nonprofits, and tribal businesses in the Tulsa/Northeastern Oklahoma region. Students conduct real client engagements under faculty supervision.</p>
+    <p class="tpc-body"><strong style="color:white">Why it's relevant:</strong> Builds OUPI's applied cybersecurity talent pipeline, and could be a referral resource for clients or contacts who need low-cost cyber risk help.</p>
+    <a href="http://www.ou.edu/news/articles/2026/june/oupi-1m-google-cybersecurity-clinic.html" class="tpc-cta" target="_blank" rel="noopener">University of Oklahoma News release &rarr;</a><br>
+    <span style="color:#888;font-size:13px">Contact: christopher.freeze@ou.edu</span>
+  </div>
+
+  <!-- ================= JOB BOARDS ================= -->
+  <div id="jobs" class="part-label">Part 6</div>
+  <hr class="section-rule" />
+  <h2 class="section-title">Job Boards &amp; Active Hiring</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Resource</th><th>Focus</th><th>Link</th></tr></thead>
+      <tbody>
+        <tr><td>Oklahoma Works Job Board</td><td>State job listings, apprenticeships</td><td><a href="https://oklahomaworks.gov" target="_blank" rel="noopener">oklahomaworks.gov</a></td></tr>
+        <tr><td>Indeed – Oklahoma Data Center</td><td>Live data center/IT postings</td><td><a href="https://www.indeed.com/q-data-center-l-oklahoma-jobs.html" target="_blank" rel="noopener">indeed.com</a></td></tr>
+        <tr><td>LinkedIn Jobs</td><td>IT, cloud, networking, DevOps</td><td><a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener">linkedin.com/jobs</a></td></tr>
+        <tr><td>Tulsa Tech Job Placement</td><td>Direct employer connections post-program</td><td><a href="https://tulsatech.edu" target="_blank" rel="noopener">tulsatech.edu</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 class="sub-title">Key Employers Actively Building Oklahoma Workforce</h3>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>Employer</th><th>Investment</th><th>Tulsa/OK Presence</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Meta</strong></td><td>Data center (East Tulsa) + AWA program</td><td>Broke ground April 2026; 200+ workforce program graduates targeted/yr</td></tr>
+        <tr><td><strong>Google</strong></td><td>$9B statewide; Pryor &amp; Stillwater data centers</td><td>Electrician pipeline expansion + OU/OSU AI education partnership</td></tr>
+        <tr><td><strong>CBRE</strong></td><td>AWA operating partner</td><td>Data center construction workforce, national scale</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ================= KEY CONTACTS ================= -->
+  <div id="contacts" class="part-label">Part 7</div>
+  <hr class="section-rule" />
+  <h2 class="section-title">Key Contacts &amp; How to Start</h2>
+
+  <h3 class="sub-title">Ready to Start Now? Four Concrete Entry Points</h3>
+  <ul class="guide-list">
+    <li><strong>1. No Experience, Skilled Trades Path</strong> → Apply to <a href="https://www.meta.com/actions/americas-workforce-academy/" target="_blank" rel="noopener">America's Workforce Academy</a> (Meta/AWA) — free training, paid stipend, guaranteed job offer</li>
+    <li><strong>2. No Experience, Tech/Cyber/Data Path</strong> → Apply to <a href="https://www.cyberskillscenter.org" target="_blank" rel="noopener">TCC Cyber Skills Center</a> — 24-week, no-cost evening program</li>
+    <li><strong>3. No Experience, Software Development Path</strong> → Apply to <a href="https://atlasschool.com" target="_blank" rel="noopener">Atlas School</a> — 20-month project-based program, no payment until employed</li>
+    <li><strong>4. Experienced Professional — Upskill for Data Center / Cloud</strong> → Start at <a href="https://upskillok.org" target="_blank" rel="noopener">UpskillOK.org</a>; pair with Google Career Certificates and Tulsa Tech's evening programs</li>
+  </ul>
+
+  <h3 class="sub-title">Full Resource Directory</h3>
+  <div class="resource-grid">
+    <div class="resource-card">
+      <div class="rc-name">Tech Partners LLC Data Center Guide</div>
+      <a href="https://techpartnersllc.github.io/Data-Center-Jobs-in-Oklahoma-/" target="_blank" rel="noopener">techpartnersllc.github.io</a>
     </div>
-    <div class="employer-strip">
-      <span class="strip-label">Major employers now hiring in Oklahoma:</span>
-      <div class="employer-chips">
-        <span class="chip">Meta</span>
-        <span class="chip">Google</span>
-        <span class="chip">Williams Companies</span>
-        <span class="chip">Deloitte</span>
-        <span class="chip">EY</span>
-        <span class="chip">CBRE</span>
-        <span class="chip">CymSTAR</span>
-        <span class="chip">Insight Global</span>
-      </div>
+    <div class="resource-card">
+      <div class="rc-name">OK Career Guide</div>
+      <a href="https://www.okcareerguide.org" target="_blank" rel="noopener">okcareerguide.org</a>
     </div>
-  </section>
-
-  <!-- ─── QUIZ ────────────────────────────────────────────────────────── -->
-  <section class="quiz-section" id="quiz" aria-label="Career pathway questionnaire">
-    <div class="quiz-container">
-      <div class="quiz-header">
-        <h2>Answer 4 quick questions</h2>
-        <p>We'll match you with the right career track and give you a personalized Tulsa action plan.</p>
-      </div>
-
-      <div class="progress-wrap" aria-hidden="true">
-        <div class="progress-bar" id="progressBar" style="width:0%"></div>
-      </div>
-
-      <form id="quizForm" novalidate>
-
-        <!-- Step 1 -->
-        <div class="quiz-step active" data-step="1">
-          <div class="step-num">01 / 04</div>
-          <h3 class="step-q">Where are you right now?</h3>
-          <div class="option-grid" role="radiogroup" aria-label="Current situation">
-            <label class="opt-card">
-              <input type="radio" name="startingPoint" value="new" />
-              <span class="opt-icon">🎓</span>
-              <span class="opt-title">New to the workforce</span>
-              <span class="opt-desc">Student, recent grad, or first career</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="startingPoint" value="changer" />
-              <span class="opt-icon">🔄</span>
-              <span class="opt-title">Career changer</span>
-              <span class="opt-desc">Employed elsewhere, want to move into tech</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="startingPoint" value="upskill" />
-              <span class="opt-icon">📈</span>
-              <span class="opt-title">Already in IT / tech</span>
-              <span class="opt-desc">Want to advance or specialize</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="startingPoint" value="displaced" />
-              <span class="opt-icon">🧭</span>
-              <span class="opt-title">Laid off or displaced</span>
-              <span class="opt-desc">Between jobs, ready to re-enter or pivot</span>
-            </label>
-          </div>
-          <button type="button" class="btn-next" data-next="2">Next →</button>
-        </div>
-
-        <!-- Step 2 -->
-        <div class="quiz-step" data-step="2">
-          <div class="step-num">02 / 04</div>
-          <h3 class="step-q">What matters most to you right now?</h3>
-          <div class="option-grid" role="radiogroup" aria-label="Primary goal">
-            <label class="opt-card">
-              <input type="radio" name="priority" value="speed" />
-              <span class="opt-icon">⚡</span>
-              <span class="opt-title">Get a job fast</span>
-              <span class="opt-desc">Hired within 3–6 months, as soon as possible</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="priority" value="earn" />
-              <span class="opt-icon">💰</span>
-              <span class="opt-title">Earn while I learn</span>
-              <span class="opt-desc">Need income during training, can't stop working</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="priority" value="growth" />
-              <span class="opt-icon">🚀</span>
-              <span class="opt-title">Build a real career</span>
-              <span class="opt-desc">Long-term growth, even if it takes longer</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="priority" value="remote" />
-              <span class="opt-icon">🌎</span>
-              <span class="opt-title">Remote flexibility</span>
-              <span class="opt-desc">Work from anywhere is the priority</span>
-            </label>
-          </div>
-          <div class="step-nav">
-            <button type="button" class="btn-back" data-back="1">← Back</button>
-            <button type="button" class="btn-next" data-next="3">Next →</button>
-          </div>
-        </div>
-
-        <!-- Step 3 -->
-        <div class="quiz-step" data-step="3">
-          <div class="step-num">03 / 04</div>
-          <h3 class="step-q">How much time can you commit to training?</h3>
-          <div class="option-grid" role="radiogroup" aria-label="Time available">
-            <label class="opt-card">
-              <input type="radio" name="timeAvailable" value="fulltime" />
-              <span class="opt-icon">📅</span>
-              <span class="opt-title">Full-time</span>
-              <span class="opt-desc">30–40 hrs/week — I can go all-in</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="timeAvailable" value="parttime" />
-              <span class="opt-icon">🌙</span>
-              <span class="opt-title">Evenings &amp; weekends</span>
-              <span class="opt-desc">10–20 hrs/week alongside my current job</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="timeAvailable" value="minimal" />
-              <span class="opt-icon">⏱️</span>
-              <span class="opt-title">A few hours a week</span>
-              <span class="opt-desc">5–10 hrs max — self-paced preferred</span>
-            </label>
-          </div>
-          <div class="step-nav">
-            <button type="button" class="btn-back" data-back="2">← Back</button>
-            <button type="button" class="btn-next" data-next="4">Next →</button>
-          </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="quiz-step" data-step="4">
-          <div class="step-num">04 / 04</div>
-          <h3 class="step-q">Which area interests you most?</h3>
-          <p class="step-hint">Pick the one that resonates — even if you don't know all the details yet.</p>
-          <div class="option-grid option-grid-3" role="radiogroup" aria-label="Area of interest">
-            <label class="opt-card">
-              <input type="radio" name="interest" value="datacenter" />
-              <span class="opt-icon">🖥️</span>
-              <span class="opt-title">Data Centers</span>
-              <span class="opt-desc">Hardware, servers, physical tech infrastructure</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="interest" value="infrastructure" />
-              <span class="opt-icon">🌐</span>
-              <span class="opt-title">IT / Networking</span>
-              <span class="opt-desc">Networks, cloud, systems administration</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="interest" value="cyber" />
-              <span class="opt-icon">🔒</span>
-              <span class="opt-title">Cybersecurity</span>
-              <span class="opt-desc">Protecting systems and data from threats</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="interest" value="aidata" />
-              <span class="opt-icon">📊</span>
-              <span class="opt-title">AI &amp; Data</span>
-              <span class="opt-desc">Data analytics, machine learning, AI tools</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="interest" value="software" />
-              <span class="opt-icon">💻</span>
-              <span class="opt-title">Software Dev</span>
-              <span class="opt-desc">Building apps, websites, and platforms</span>
-            </label>
-            <label class="opt-card">
-              <input type="radio" name="interest" value="trades" />
-              <span class="opt-icon">⚡</span>
-              <span class="opt-title">Skilled Trades</span>
-              <span class="opt-desc">Electrical, HVAC, data center construction</span>
-            </label>
-            <label class="opt-card opt-card-wide">
-              <input type="radio" name="interest" value="unsure" />
-              <span class="opt-icon">🤔</span>
-              <span class="opt-title">Not sure yet</span>
-              <span class="opt-desc">Show me what's in demand and pays well in Tulsa</span>
-            </label>
-          </div>
-          <div class="step-nav">
-            <button type="button" class="btn-back" data-back="3">← Back</button>
-            <button type="button" class="btn-submit" id="generateBtn">Show My Career Plan →</button>
-          </div>
-        </div>
-
-      </form>
-      <div class="quiz-error" id="quizError" role="alert" aria-live="polite"></div>
+    <div class="resource-card">
+      <div class="rc-name">OKcollegestart.org</div>
+      <a href="https://www.okcollegestart.org" target="_blank" rel="noopener">okcollegestart.org</a>
     </div>
-  </section>
-
-  <!-- ─── RESULTS ──────────────────────────────────────────────────────── -->
-  <section class="results-section" id="results" hidden aria-live="polite">
-    <div class="results-inner" id="resultsContent"></div>
-  </section>
-
-  <!-- ─── RESOURCES ────────────────────────────────────────────────────── -->
-  <section class="resources-section" id="resources">
-    <div class="resources-inner">
-      <div class="section-header">
-        <h2>Tulsa Workforce Resources</h2>
-        <p>Free coaching, funding, training, and support services — all vetted and current.</p>
-      </div>
-      <div class="resources-grid">
-
-        <!-- CareerOneStop — featured, full-width -->
-        <div class="resource-featured">
-          <div class="resource-featured-content">
-            <div class="resource-tag cos-tag">U.S. Department of Labor</div>
-            <h3>CareerOneStop</h3>
-            <p>The federal government's free career platform. Use it to explore occupations outside the six tracks above, search all accredited training programs near Tulsa, browse 375+ live local job listings, and find WIOA-funded training that may cover your costs.</p>
-            <div class="cos-quick-links">
-              <a href="https://www.careeronestop.org/Toolkit/Careers/interest-assessment.aspx" target="_blank" rel="noopener" class="cos-pill">Interest Assessment</a>
-              <a href="https://www.careeronestop.org/LocalHelp/EducationAndTraining/find-colleges.aspx?location=Tulsa%2C+OK&radius=25&lang=en" target="_blank" rel="noopener" class="cos-pill">Training Near Tulsa</a>
-              <a href="https://www.careeronestop.org/JobSearch/FindJobs/find-jobs.aspx?keyword=technology&location=Tulsa%2C+OK&radius=25&lang=en" target="_blank" rel="noopener" class="cos-pill">Tulsa Tech Jobs</a>
-              <a href="https://www.careeronestop.org/LocalHelp/EducationAndTraining/find-WIOA-training.aspx?location=Tulsa%2C+OK&radius=25&lang=en" target="_blank" rel="noopener" class="cos-pill">WIOA-Funded Training</a>
-              <a href="https://www.careeronestop.org/LocalHelp/service-locator.aspx?location=Tulsa%2C+OK&lang=en" target="_blank" rel="noopener" class="cos-pill">Local Job Centers</a>
-            </div>
-          </div>
-          <div class="resource-featured-cta">
-            <a href="https://www.careeronestop.org" target="_blank" rel="noopener" class="btn-cos">Visit CareerOneStop →</a>
-            <p class="cos-note">Free · No account required · Powered by DOL &amp; O*NET</p>
-          </div>
-        </div>
-
-        <!-- Supporting resources -->
-        <a href="https://oklahomaworks.gov" target="_blank" rel="noopener" class="resource-card">
-          <div class="rc-icon">💼</div>
-          <h3>Oklahoma Works</h3>
-          <p>WIOA training grants, job placement, and American Job Centers. Federal funding for eligible job seekers.</p>
-          <span class="rc-link">oklahomaworks.gov →</span>
-        </a>
-        <a href="https://www.tulsainnovationlabs.com" target="_blank" rel="noopener" class="resource-card">
-          <div class="rc-icon">💡</div>
-          <h3>Tulsa Innovation Labs</h3>
-          <p>Co-funds the TCC Cyber Skills Center and connects talent to Tulsa's tech employers. Backed by the George Kaiser Family Foundation.</p>
-          <span class="rc-link">tulsainnovationlabs.com →</span>
-        </a>
-        <a href="https://www.retraintulsa.org" target="_blank" rel="noopener" class="resource-card">
-          <div class="rc-icon">🤝</div>
-          <h3>Retrain Tulsa</h3>
-          <p>Free career coaching, childcare navigation, and transportation support for Tulsa County residents in career transition.</p>
-          <span class="rc-link">retraintulsa.org →</span>
-        </a>
-        <a href="https://upskillok.org" target="_blank" rel="noopener" class="resource-card">
-          <div class="rc-icon">🎓</div>
-          <h3>UpskillOK</h3>
-          <p>Oklahoma's statewide microcredential platform. Short-term, stackable, employer-aligned credentials from colleges across the state.</p>
-          <span class="rc-link">upskillok.org →</span>
-        </a>
-        <a href="https://oklahoma.gov/careertech" target="_blank" rel="noopener" class="resource-card">
-          <div class="rc-icon">🛠️</div>
-          <h3>Oklahoma CareerTech</h3>
-          <p>Technical training across 29 technology centers statewide. Employer-customized training available on request.</p>
-          <span class="rc-link">oklahoma.gov/careertech →</span>
-        </a>
-        <a href="https://skillstorm.com" target="_blank" rel="noopener" class="resource-card">
-          <div class="rc-icon">⚙️</div>
-          <h3>SkillStorm</h3>
-          <p>Enterprise tech training and apprenticeship pathway. Optional post-graduation track for TCC Cyber Skills Center graduates.</p>
-          <span class="rc-link">skillstorm.com →</span>
-        </a>
-
-      </div>
+    <div class="resource-card">
+      <div class="rc-name">Oklahoma Works — Training Programs</div>
+      <a href="https://oklahomaworks.gov" target="_blank" rel="noopener">oklahomaworks.gov</a>
     </div>
-  </section>
-
-
-  <!-- ─── FINDING YOUR ON-RAMP ────────────────────────────────────────── -->
-  <section class="onramp-section" id="onramp">
-    <div class="onramp-inner">
-      <div class="section-header">
-        <div class="section-eyebrow">For Individuals, Career Changers &amp; Parents</div>
-        <h2>Finding Your On-Ramp</h2>
-        <p>Wherever you are in life — student, career changer, veteran, or parent of a school-age child — there is a clear path into Oklahoma's tech and trades workforce. Expand any section below.</p>
-      </div>
-
-      <div class="accordion" id="onrampAccordion">
-
-        <!-- K-12 -->
-        <div class="acc-item" id="acc-k12">
-          <button class="acc-trigger" aria-expanded="false" aria-controls="acc-k12-body">
-            <span class="acc-icon-wrap"><span class="acc-emoji">🎒</span></span>
-            <span class="acc-label">
-              <span class="acc-title">K–12: Discover → Explore → Specialize</span>
-              <span class="acc-sub">For students &amp; parents — the pipeline from elementary school to a first career</span>
-            </span>
-            <span class="acc-chevron" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </button>
-          <div class="acc-body" id="acc-k12-body" hidden>
-            <div class="acc-content">
-
-              <div class="onramp-flow">
-                <div class="flow-step">
-                  <div class="flow-badge">Elementary</div>
-                  <div class="flow-title">Discover</div>
-                  <div class="flow-desc">Basic digital citizenship, typing, and logic/coding games. Oklahoma public schools follow state computer science standards that introduce these concepts early. Use <a href="https://www.okcareerguide.org" target="_blank" rel="noopener">OK Career Guide</a> to explore careers at any age — it's free for all Oklahomans.</div>
-                </div>
-                <div class="flow-arrow" aria-hidden="true">→</div>
-                <div class="flow-step">
-                  <div class="flow-badge">Middle School</div>
-                  <div class="flow-title">Explore</div>
-                  <div class="flow-desc">Introductory computer science, STEM electives, block-based coding, robotics, and basic web design. Use <a href="https://www.okcareerguide.org" target="_blank" rel="noopener">OK Career Guide</a> and <a href="https://www.okcollegestart.org" target="_blank" rel="noopener">OKcollegestart.org</a> to take free interest assessments and see how "liking tech" connects to real jobs.</div>
-                </div>
-                <div class="flow-arrow" aria-hidden="true">→</div>
-                <div class="flow-step flow-step-highlight">
-                  <div class="flow-badge flow-badge-primary">High School</div>
-                  <div class="flow-title">Specialize</div>
-                  <div class="flow-desc">Choose a CareerTech pathway: IT support, networking, web & digital media, programming, or skilled trades. Earn real certifications and college credit before you graduate.</div>
-                </div>
-              </div>
-
-              <div class="onramp-cards">
-                <div class="onramp-card">
-                  <div class="oc-header">
-                    <span class="oc-logo-text">Tulsa Tech</span>
-                    <span class="oc-tag">Tulsa County</span>
-                  </div>
-                  <p>Serves Tulsa County high school students <strong>tuition-free</strong>. Programs in IT Networking, Cyber Security, Computer Repair, Enterprise Networks, and more — available during the school day or evenings. Students can earn CompTIA A+ and Network+ certifications before graduating.</p>
-                  <a href="https://tulsatech.edu" target="_blank" rel="noopener" class="oc-link">tulsatech.edu →</a>
-                </div>
-                <div class="onramp-card">
-                  <div class="oc-header">
-                    <span class="oc-logo-text">Statewide CareerTech</span>
-                    <span class="oc-tag">All 77 Counties</span>
-                  </div>
-                  <p>Oklahoma has <strong>29 CareerTech technology centers</strong> serving every county. Most offer tuition-free enrollment to in-district high school students. Programs range from IT and cybersecurity to electrical trades and construction.</p>
-                  <a href="https://oklahoma.gov/careertech" target="_blank" rel="noopener" class="oc-link">oklahoma.gov/careertech →</a>
-                </div>
-                <div class="onramp-card">
-                  <div class="oc-header">
-                    <span class="oc-logo-text">OKcollegestart.org</span>
-                    <span class="oc-tag">Free Tool</span>
-                  </div>
-                  <p>Free college and career planning portal for Oklahoma students. Build an education plan, search for scholarships and financial aid, and connect career interests to specific CareerTech and college programs.</p>
-                  <a href="https://www.okcollegestart.org" target="_blank" rel="noopener" class="oc-link">okcollegestart.org →</a>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Stackable Pathways -->
-        <div class="acc-item" id="acc-stackable">
-          <button class="acc-trigger" aria-expanded="false" aria-controls="acc-stackable-body">
-            <span class="acc-icon-wrap"><span class="acc-emoji">📚</span></span>
-            <span class="acc-label">
-              <span class="acc-title">After High School: Stackable Pathways</span>
-              <span class="acc-sub">Free CareerTech → AAS/BT degree → entry-level job in Tulsa or OKC</span>
-            </span>
-            <span class="acc-chevron" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </button>
-          <div class="acc-body" id="acc-stackable-body" hidden>
-            <div class="acc-content">
-              <p class="acc-intro">Oklahoma's postsecondary system is designed to be stackable — you don't have to choose between working and earning credentials. The three steps below apply across IT, cybersecurity, data, and trades tracks.</p>
-
-              <div class="ladder">
-                <div class="ladder-step">
-                  <div class="ladder-num">1</div>
-                  <div class="ladder-content">
-                    <div class="ladder-title">Free or Low-Cost CareerTech Training</div>
-                    <p>Enroll as an adult at Tulsa Tech or any of Oklahoma's 29 CareerTech centers. Evening and weekend options available. Many programs are low-cost or covered by WIOA funding through <a href="https://oklahomaworks.gov" target="_blank" rel="noopener">Oklahoma Works</a>.</p>
-                    <div class="ladder-certs">
-                      <span class="cert-chip">CompTIA A+</span>
-                      <span class="cert-chip">Network+</span>
-                      <span class="cert-chip">Security+</span>
-                      <span class="cert-chip">NCCER</span>
-                      <span class="cert-chip">OSHA 10</span>
-                    </div>
-                    <p class="ladder-note">Tulsa Tech's Enterprise Network Technologies program is GI Bill–eligible. Use <a href="https://www.careeronestop.org/LocalHelp/EducationAndTraining/find-colleges.aspx?location=Tulsa%2C+OK&radius=25&lang=en" target="_blank" rel="noopener">CareerOneStop's Training Finder</a> to search all accredited programs near Tulsa with WIOA-funding flags.</p>
-                  </div>
-                </div>
-                <div class="ladder-connector" aria-hidden="true"></div>
-                <div class="ladder-step">
-                  <div class="ladder-num">2</div>
-                  <div class="ladder-content">
-                    <div class="ladder-title">Associate of Applied Science (AAS) or Bachelor of Technology (BT)</div>
-                    <p>Stack a degree on top of your CareerTech credentials to deepen expertise and raise your ceiling.</p>
-                    <div class="onramp-cards onramp-cards-sm">
-                      <div class="onramp-card">
-                        <div class="oc-header"><span class="oc-logo-text">OSU-OKC</span></div>
-                        <p>AAS in Information Technology — networking, Microsoft systems, and IT support tracks. Affordable and transfer-friendly.</p>
-                        <a href="https://osuokc.edu" target="_blank" rel="noopener" class="oc-link">osuokc.edu →</a>
-                      </div>
-                      <div class="onramp-card">
-                        <div class="oc-header"><span class="oc-logo-text">OSUIT</span></div>
-                        <p>BT in IT with tracks in Cybersecurity, Network Infrastructure, and Software Development. Partnered with Google's Pryor and Stillwater data centers.</p>
-                        <a href="https://osuit.edu" target="_blank" rel="noopener" class="oc-link">osuit.edu →</a>
-                      </div>
-                      <div class="onramp-card">
-                        <div class="oc-header"><span class="oc-logo-text">TCC</span></div>
-                        <p>AAS pathways plus the free Cyber Skills Center for accelerated entry into cyber, data analytics, and AI — no cost, evenings.</p>
-                        <a href="https://tulsacc.edu" target="_blank" rel="noopener" class="oc-link">tulsacc.edu →</a>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="ladder-connector" aria-hidden="true"></div>
-                <div class="ladder-step ladder-step-final">
-                  <div class="ladder-num ladder-num-final">3</div>
-                  <div class="ladder-content">
-                    <div class="ladder-title">Entry-Level Jobs in Tulsa &amp; Oklahoma</div>
-                    <p>Your combination of CareerTech certifications and AAS/BT credentials positions you for roles like:</p>
-                    <div class="roles-wrap">
-                      <span class="role-chip">IT Support Specialist</span>
-                      <span class="role-chip">Help Desk Technician</span>
-                      <span class="role-chip">Junior Network Technician</span>
-                      <span class="role-chip">Systems Administrator</span>
-                      <span class="role-chip">SOC Analyst</span>
-                      <span class="role-chip">Data Center Technician</span>
-                      <span class="role-chip">Journeyman Electrician</span>
-                    </div>
-                    <p class="ladder-note">See <a href="#quiz">the quiz above</a> for salary ranges and full role breakdowns by track.</p>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Veterans & Mid-Career -->
-        <div class="acc-item" id="acc-vets">
-          <button class="acc-trigger" aria-expanded="false" aria-controls="acc-vets-body">
-            <span class="acc-icon-wrap"><span class="acc-emoji">🎖️</span></span>
-            <span class="acc-label">
-              <span class="acc-title">Veterans &amp; Mid-Career Professionals</span>
-              <span class="acc-sub">Translate your experience into civilian IT credentials — VA-eligible programs &amp; GI Bill options</span>
-            </span>
-            <span class="acc-chevron" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </button>
-          <div class="acc-body" id="acc-vets-body" hidden>
-            <div class="acc-content">
-              <p class="acc-intro">If you've served in the military or spent years in another industry, you likely have more transferable skills than you realize. Leadership, troubleshooting under pressure, logistics, and communications all map directly to IT, cybersecurity, and operations roles.</p>
-
-              <div class="ladder">
-                <div class="ladder-step">
-                  <div class="ladder-num">1</div>
-                  <div class="ladder-content">
-                    <div class="ladder-title">Clarify Your Target Track</div>
-                    <p>Use <a href="https://www.okcareerguide.org" target="_blank" rel="noopener">OK Career Guide</a> occupation profiles to match your background to a specific role family — support, systems, cybersecurity, data, or trades. <a href="https://www.careeronestop.org/Toolkit/Careers/interest-assessment.aspx" target="_blank" rel="noopener">CareerOneStop's free interest assessment</a> is another strong starting point.</p>
-                  </div>
-                </div>
-                <div class="ladder-connector" aria-hidden="true"></div>
-                <div class="ladder-step">
-                  <div class="ladder-num">2</div>
-                  <div class="ladder-content">
-                    <div class="ladder-title">Map Your Experience to Civilian IT Skills</div>
-                    <p>Oklahoma's CareerTech centers and community colleges understand how to evaluate prior military and professional experience — many can grant credit or advanced standing. You may be closer to a credential than you think.</p>
-                  </div>
-                </div>
-                <div class="ladder-connector" aria-hidden="true"></div>
-                <div class="ladder-step ladder-step-final">
-                  <div class="ladder-num">3</div>
-                  <div class="ladder-content">
-                    <div class="ladder-title">Choose a Training Path That Works With Your Benefits</div>
-                    <div class="vet-programs">
-                      <div class="vet-card">
-                        <div class="vet-card-header">
-                          <span class="vet-tag gi-tag">GI Bill Eligible</span>
-                          <span class="vet-name">Tulsa Tech</span>
-                        </div>
-                        <p>Enterprise Network Technologies, Cyber Security/Forensics, and several other IT programs are GI Bill–eligible.</p>
-                        <a href="https://www.benefits.va.gov/GIBILL/" target="_blank" rel="noopener" class="oc-link">Verify at VA.gov →</a>
-                      </div>
-                      <div class="vet-card">
-                        <div class="vet-card-header">
-                          <span class="vet-tag gi-tag">GI Bill Eligible</span>
-                          <span class="vet-name">OSUIT</span>
-                        </div>
-                        <p>Multiple BT programs are VA-eligible. Strong fit for veterans with technical or mechanical backgrounds targeting data center, networking, or cybersecurity careers.</p>
-                        <a href="https://osuit.edu" target="_blank" rel="noopener" class="oc-link">osuit.edu →</a>
-                      </div>
-                      <div class="vet-card vet-card-free">
-                        <div class="vet-card-header">
-                          <span class="vet-tag free-tag">No GI Bill Needed</span>
-                          <span class="vet-name">TCC Cyber Skills Center</span>
-                        </div>
-                        <p>Free 24-week evening program — no GI Bill required because it costs nothing. Ideal for veterans who want to move fast without using education benefits.</p>
-                        <a href="https://www.tulsacc.edu/academics/workforce-continuing-education/workforce-trainings/cyber-skills-center" target="_blank" rel="noopener" class="oc-link">Apply at TCC →</a>
-                      </div>
-                      <div class="vet-card vet-card-free">
-                        <div class="vet-card-header">
-                          <span class="vet-tag free-tag">Built for Veterans</span>
-                          <span class="vet-name">America's Workforce Academy</span>
-                        </div>
-                        <p>Explicitly designed for veterans entering skilled trades. Free training, daily stipend, housing covered, and a guaranteed job offer at completion.</p>
-                        <a href="https://www.meta.com/actions/americas-workforce-academy/" target="_blank" rel="noopener" class="oc-link">Apply at Meta/AWA →</a>
-                      </div>
-                    </div>
-                    <div class="wioa-note">
-                      <span class="wioa-label">WIOA Funding Available</span>
-                      Dislocated workers and eligible job seekers can access training grants for approved programs through <a href="https://oklahomaworks.gov" target="_blank" rel="noopener">Oklahoma Works</a>.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-
-        <!-- Free Tools -->
-        <div class="acc-item" id="acc-tools">
-          <button class="acc-trigger" aria-expanded="false" aria-controls="acc-tools-body">
-            <span class="acc-icon-wrap"><span class="acc-emoji">🛠️</span></span>
-            <span class="acc-label">
-              <span class="acc-title">Free Oklahoma Career Tools</span>
-              <span class="acc-sub">Free platforms for students, parents, adults, and veterans — bookmark these</span>
-            </span>
-            <span class="acc-chevron" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-            </span>
-          </button>
-          <div class="acc-body" id="acc-tools-body" hidden>
-            <div class="acc-content">
-              <p class="acc-intro">These platforms are free for every audience and work at every life stage. They complement the six career tracks above — especially useful when exploring options outside the tracks or preparing for a CareerTech or college application.</p>
-              <div class="tools-grid">
-                <a href="https://www.okcareerguide.org" target="_blank" rel="noopener" class="tool-card">
-                  <div class="tool-icon">🗺️</div>
-                  <div class="tool-name">OK Career Guide</div>
-                  <p>Career exploration, interest assessments, occupation profiles, and education planning — free for all Oklahomans, students through adults.</p>
-                  <span class="oc-link">okcareerguide.org →</span>
-                </a>
-                <a href="https://www.okcollegestart.org" target="_blank" rel="noopener" class="tool-card">
-                  <div class="tool-icon">🎓</div>
-                  <div class="tool-name">OKcollegestart.org</div>
-                  <p>College and career planning portal for Oklahoma students. Scholarship search, financial aid tools, and detailed career information.</p>
-                  <span class="oc-link">okcollegestart.org →</span>
-                </a>
-                <a href="https://www.careeronestop.org" target="_blank" rel="noopener" class="tool-card">
-                  <div class="tool-icon">🇺🇸</div>
-                  <div class="tool-name">CareerOneStop</div>
-                  <p>Federal career platform (U.S. Dept. of Labor). Interest assessment, live wage data for every occupation, training finder, and Tulsa job listings.</p>
-                  <span class="oc-link">careeronestop.org →</span>
-                </a>
-                <a href="https://oklahomaworks.gov" target="_blank" rel="noopener" class="tool-card">
-                  <div class="tool-icon">💼</div>
-                  <div class="tool-name">Oklahoma Works</div>
-                  <p>State workforce system — WIOA training grants, job placement, and American Job Centers. Federal funding available for eligible job seekers.</p>
-                  <span class="oc-link">oklahomaworks.gov →</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /accordion -->
+    <div class="resource-card">
+      <div class="rc-name">Oklahoma CareerTech</div>
+      <a href="https://oklahoma.gov/careertech" target="_blank" rel="noopener">oklahoma.gov/careertech</a>
     </div>
-  </section>
-
-  <!-- ─── ABOUT ────────────────────────────────────────────────────────── -->
-  <section class="about-section" id="about">
-    <div class="about-inner">
-      <div class="about-content">
-        <h2>About This Guide</h2>
-        <p>TulsaCareerPath is a free public resource built and maintained by <strong>Tech Partners LLC</strong> — Tulsa's IT staffing and recruitment specialists. The goal is simple: surface what already exists in Tulsa's workforce ecosystem, make pathways obvious, and give people a concrete plan rather than a list of links to sort through.</p>
-        <p>For occupations not covered in the six tracks above, <a href="https://www.careeronestop.org" target="_blank" rel="noopener">CareerOneStop</a> (U.S. Dept. of Labor) offers the most comprehensive free career exploration tool available — including a validated interest assessment, live wage data for every occupation, and a training finder with WIOA-funded program flags.</p>
-        <p>This is a living document. Programs, employers, and opportunities are added as they emerge. Last reviewed: June 2026.</p>
-        <div class="about-links">
-          <a href="https://techpartnersllc.com" target="_blank" rel="noopener" class="btn-primary">Visit Tech Partners LLC</a>
-          <a href="mailto:doug.halve@techpartnersllc.com" class="btn-secondary">Contact Doug Halve</a>
-          <a href="https://techpartnersllc.github.io/Data-Center-Jobs-in-Oklahoma-/" target="_blank" rel="noopener" class="btn-secondary">Oklahoma Data Center Guide</a>
-        </div>
-      </div>
-      <div class="about-logo-wrap">
-        <img src="logo-horizontal.jpg" alt="Tech Partners LLC — IT Staffing &amp; Recruitment Specialists" class="about-logo about-logo-h" />
-        <p class="about-tagline">Building Bridges Between Talent, Education &amp; Industry</p>
-      </div>
+    <div class="resource-card">
+      <div class="rc-name">CareerOneStop (U.S. Dept. of Labor)</div>
+      <a href="https://www.careeronestop.org" target="_blank" rel="noopener">careeronestop.org</a>
     </div>
-  </section>
-
-  <!-- ─── FOOTER ───────────────────────────────────────────────────────── -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <svg width="26" height="26" viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="8" fill="#C0202A"/><text x="18" y="25" text-anchor="middle" font-family="sans-serif" font-weight="800" font-size="15" fill="white">TP</text></svg>
-        <span>TulsaCareerPath by Tech Partners LLC</span>
-      </div>
-      <p class="footer-copy">
-        <a href="https://techpartnersllc.com" target="_blank" rel="noopener">techpartnersllc.com</a> ·
-        <a href="https://www.careeronestop.org" target="_blank" rel="noopener">careeronestop.org</a> ·
-        <a href="https://techpartnersllc.github.io/Data-Center-Jobs-in-Oklahoma-/" target="_blank" rel="noopener">Oklahoma Data Center Guide</a>
-      </p>
-      <p class="footer-disclaimer">Program information current as of June 2026. Always verify details directly with providers before enrolling. CareerOneStop is a free service of the U.S. Department of Labor.</p>
+    <div class="resource-card">
+      <div class="rc-name">Tulsa Tech — Workforce Training</div>
+      <a href="https://tulsatech.edu/workforce-training-and-development/" target="_blank" rel="noopener">tulsatech.edu</a>
     </div>
-  </footer>
+    <div class="resource-card">
+      <div class="rc-name">TCC Cyber Skills Center</div>
+      <a href="https://www.cyberskillscenter.org" target="_blank" rel="noopener">cyberskillscenter.org</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Upskill Oklahoma Microcredentials</div>
+      <a href="https://upskillok.org" target="_blank" rel="noopener">upskillok.org</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Atlas School</div>
+      <a href="https://atlasschool.com" target="_blank" rel="noopener">atlasschool.com</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Tulsa Innovation Labs</div>
+      <a href="https://www.tulsainnovationlabs.com" target="_blank" rel="noopener">tulsainnovationlabs.com</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">America's Workforce Academy (Meta) — Waitlist <span class="new-badge">New</span></div>
+      <a href="https://cbreglobal.avature.net/AmericasWorkforceAcademyForm" target="_blank" rel="noopener">Join the waitlist</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Electrical Training Alliance</div>
+      <a href="https://www.electricaltrainingalliance.org" target="_blank" rel="noopener">electricaltrainingalliance.org</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">OSUIT Electrical Program</div>
+      <a href="https://www.osuit.edu" target="_blank" rel="noopener">osuit.edu</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Google AI for Education (OSU)</div>
+      <a href="https://news.okstate.edu/articles/communications/2025/oklahoma_state_university_joins_google_ai_for_education_accelerator.html" target="_blank" rel="noopener">news.okstate.edu</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Oklahoma Manufacturing Alliance — Apprenticeships <span class="new-badge">New</span></div>
+      <a href="https://www.okalliance.com/workforce/registered-apprenticeships/" target="_blank" rel="noopener">okalliance.com</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">Microsoft Cybersecurity Scholarship <span class="new-badge">New</span></div>
+      <a href="https://www.lastmile-ed.org/microsoftcybersecurityscholarship" target="_blank" rel="noopener">lastmile-ed.org</a>
+    </div>
+    <div class="resource-card">
+      <div class="rc-name">OUPI Cybersecurity Clinic <span class="new-badge">New</span></div>
+      <a href="http://www.ou.edu/news/articles/2026/june/oupi-1m-google-cybersecurity-clinic.html" target="_blank" rel="noopener">ou.edu news release</a>
+    </div>
+  </div>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
-<script data-pplx-inline-edit>
-(function () {
-  if (window === window.top) return;
+  <!-- ABOUT CTA -->
+  <div class="about-section">
+    <h2>About Tech Partners LLC</h2>
+    <p>Tech Partners LLC is a Tulsa-based IT recruiting and staffing firm specializing in connecting Oklahoma's top technology talent with companies that are building their future. We work with companies at every stage — from first hires to enterprise workforce planning — to build sustainable, strategic talent pipelines.</p>
+    <p>If you're a job seeker exploring one of these pathways, or an employer looking to build a talent pipeline through apprenticeships, upskilling, or internship programs, we would welcome the conversation.</p>
+    <a href="https://techpartnersllc.com/contact-page/" class="cta-link" target="_blank" rel="noopener">Get in Touch ↗</a>
+    <p style="margin-top:14px;color:#aaa;font-size:14px">Doug Halve &nbsp;|&nbsp; <a href="tel:9184074015" style="color:var(--red)">918-407-4015</a> &nbsp;|&nbsp; <a href="mailto:doug.halve@techpartnersllc.com" style="color:var(--red)">doug.halve@techpartnersllc.com</a></p>
+  </div>
 
-  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
-  const MAX_FONT_BYTES = 500 * 1024;
-  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
-  let scrollForwarding = false;
-  let scrollRaf = 0;
-  let trustedTopOrigin = null;
+</main>
 
-  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
-  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
-  // across multiple labels.
-  function matchesAllowedOrigin(origin) {
-    if (!origin) return false;
-    for (const entry of allowedParentOrigins) {
-      if (!entry.includes("*")) {
-        if (entry === origin) return true;
-        continue;
-      }
-      const pattern = new RegExp(
-        "^" +
-          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
-          "$",
-      );
-      if (pattern.test(origin)) return true;
-    }
-    return false;
-  }
+<footer>
+  <p>Guide maintained by Tech Partners LLC · Doug Halve · <a href="mailto:doug.halve@techpartnersllc.com">doug.halve@techpartnersllc.com</a></p>
+  <p style="margin-top:6px">To suggest additions or corrections, reach out directly. Last updated July 2026.</p>
+</footer>
 
-  // Trust decision: when the sender is same-origin-visible (event.origin is a
-  // real origin like https://www.perplexity.ai) we trust event.origin directly.
-  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
-  // broker's stamped `parentOrigin` to identify the top window. The fallback
-  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
-  // on the response path (see postToTrustedTop) to ensure replies can't be
-  // delivered to anyone but the actual top window of that claimed origin.
-  function getTrustedParentOrigin(event) {
-    const forwardedParentOrigin =
-      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
-    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
-    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
-  }
-
-  // All responses go to window.top with targetOrigin = the allowlisted origin.
-  // An attacker that iframes us inside their own null-origin broker can claim
-  // any parentOrigin they like, but the browser will drop the reply whenever
-  // the real top's origin doesn't match — so the screenshot never leaves.
-  function postToTrustedTop(message) {
-    if (!trustedTopOrigin) return;
-    try {
-      window.top.postMessage(message, trustedTopOrigin);
-    } catch (_error) {}
-  }
-
-  function inlineAll(original, clone) {
-    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
-
-    try {
-      const computedStyle = getComputedStyle(original);
-      // cssText on a computed style is the serialized declaration in modern
-      // Chromium/Safari — a single read beats enumerating ~400 longhand
-      // properties. Firefox returns "" here, so we fall back on empty.
-      const serialized = computedStyle.cssText;
-      if (serialized) {
-        clone.style.cssText = serialized;
-      } else {
-        const parts = new Array(computedStyle.length);
-        for (let index = 0; index < computedStyle.length; index += 1) {
-          const property = computedStyle[index];
-          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
-        }
-        clone.style.cssText = parts.join("");
-      }
-    } catch (_error) {}
-
-    const originalChildren = original.children;
-    const clonedChildren = clone.children;
-    for (
-      let index = 0;
-      index < originalChildren.length && index < clonedChildren.length;
-      index += 1
-    ) {
-      inlineAll(originalChildren[index], clonedChildren[index]);
-    }
-  }
-
-  function extractFontUrl(srcValue) {
-    const matches = [
-      ...srcValue.matchAll(
-        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
-      ),
-    ];
-    if (matches.length === 0) return null;
-    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
-    if (woff2) return woff2[1];
-    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
-    if (woff) return woff[1];
-    return matches[0][1];
-  }
-
-  // Cache resolved font URL -> data URI across captures. Fonts on a page
-  // essentially never change, and a batch run emits multiple captures back to
-  // back — without this we'd refetch + re-base64 every time.
-  const fontDataUriCache = new Map();
-  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
-
-  async function fetchAsDataUri(url) {
-    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
-    let dataUri = null;
-    try {
-      const response = await fetch(url, { mode: "cors", credentials: "omit" });
-      if (response.ok) {
-        const blob = await response.blob();
-        if (blob.size <= MAX_FONT_BYTES) {
-          dataUri = await new Promise((resolve) => {
-            const reader = new FileReader();
-            reader.onloadend = () =>
-              resolve(typeof reader.result === "string" ? reader.result : null);
-            reader.onerror = () => resolve(null);
-            reader.readAsDataURL(blob);
-          });
-        }
-      }
-    } catch (_error) {
-      dataUri = null;
-    }
-    fontDataUriCache.set(url, dataUri);
-    return dataUri;
-  }
-
-  function collectFontFaceRuleTexts() {
-    const rules = [];
-    for (const sheet of document.styleSheets) {
-      let cssRules;
-      try {
-        cssRules = sheet.cssRules;
-      } catch (_error) {
-        continue;
-      }
-      if (!cssRules) continue;
-      for (const rule of cssRules) {
-        const cssText = rule.cssText || "";
-        if (cssText.startsWith("@font-face")) rules.push(cssText);
-      }
-    }
-    return rules;
-  }
-
-  async function buildInlinedFontCss() {
-    const ruleTexts = collectFontFaceRuleTexts();
-    if (ruleTexts.length === 0) return null;
-
-    const resolved = ruleTexts.map((cssText) => {
-      if (!SRC_DECLARATION_RE.test(cssText)) return null;
-      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
-      if (!srcMatch) return null;
-      const url = extractFontUrl(srcMatch[1]);
-      if (!url) return null;
-      try {
-        return { cssText, url: new URL(url, document.baseURI).href };
-      } catch (_error) {
-        return null;
-      }
-    });
-
-    const dataUris = await Promise.all(
-      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
-    );
-
-    const inlined = [];
-    let totalBytes = 0;
-    for (let index = 0; index < resolved.length; index += 1) {
-      const entry = resolved[index];
-      const dataUri = dataUris[index];
-      if (!entry || !dataUri) continue;
-      const approxBytes = dataUri.length * 0.75;
-      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
-      totalBytes += approxBytes;
-      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
-    }
-    return inlined.length > 0 ? inlined.join("\n") : null;
-  }
-
-  function stripExternal(clone) {
-    const images = clone.querySelectorAll("img");
-    for (let index = 0; index < images.length; index += 1) {
-      const src = images[index].getAttribute("src");
-      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
-    }
-
-    const elements = clone.querySelectorAll("*");
-    for (let index = 0; index < elements.length; index += 1) {
-      const style = elements[index].style.cssText;
-      if (style && style.includes("url(")) {
-        elements[index].style.cssText = style.replace(
-          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
-          "none",
-        );
-      }
-    }
-  }
-
-  function emitScroll() {
-    scrollRaf = 0;
-    if (!scrollForwarding) return;
-    postToTrustedTop({
-      type: "INLINE_EDIT_SCROLL",
-      scrollX: window.scrollX,
-      scrollY: window.scrollY,
-    });
-  }
-
-  window.addEventListener(
-    "scroll",
-    function () {
-      if (!scrollForwarding || scrollRaf) return;
-      scrollRaf = requestAnimationFrame(emitScroll);
-    },
-    { passive: true, capture: true },
-  );
-
-  async function handleCaptureRequest(event) {
-    const requestId = event.data.requestId;
-    const scrollX = window.scrollX;
-    const scrollY = window.scrollY;
-    const width = window.innerWidth;
-    const height = window.innerHeight;
-
-    function postResult(dataUrl) {
-      postToTrustedTop({
-        type: "INLINE_EDIT_SCREENSHOT_RESULT",
-        requestId,
-        dataUrl,
-        scrollX,
-        scrollY,
-      });
-    }
-
-    try {
-      // Wait for any pending web fonts to resolve so both inline metrics and
-      // the @font-face inlining below see the same loaded faces.
-      if (document.fonts && document.fonts.ready) {
-        try {
-          await document.fonts.ready;
-        } catch (_error) {}
-      }
-
-      const clone = document.documentElement.cloneNode(true);
-      inlineAll(document.documentElement, clone);
-
-      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
-      for (let index = 0; index < removedNodes.length; index += 1) {
-        removedNodes[index].remove();
-      }
-
-      stripExternal(clone);
-
-      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
-      // can resolve them — external font URLs aren't fetched during
-      // foreignObject rendering, which would otherwise force a fallback face
-      // and change text metrics.
-      const inlinedFontCss = await buildInlinedFontCss();
-      if (inlinedFontCss) {
-        const styleEl = document.createElement("style");
-        styleEl.textContent = inlinedFontCss;
-        const head = clone.querySelector("head");
-        if (head) head.appendChild(styleEl);
-        else clone.insertBefore(styleEl, clone.firstChild);
-      }
-
-      const html = new XMLSerializer().serializeToString(clone);
-      const svg =
-        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
-        '<foreignObject width="100%" height="100%">' +
-        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
-        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
-        html +
-        "</div></div></foreignObject></svg>";
-      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
-      const image = new Image();
-      image.onload = function () {
-        const canvas = document.createElement("canvas");
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext("2d").drawImage(image, 0, 0);
-        postResult(canvas.toDataURL("image/png"));
-      };
-      image.onerror = function () {
-        postResult(null);
-      };
-      image.src = svgUrl;
-    } catch (_error) {
-      postResult(null);
-    }
-  }
-
-  window.addEventListener("message", function (event) {
-    if (!event.data) return;
-    // Only accept messages from the direct parent frame. Blocks sibling /
-    // unrelated-window postMessage senders that could otherwise reach us.
-    if (event.source !== window.parent) return;
-
-    const trustedParentOrigin = getTrustedParentOrigin(event);
-    if (!trustedParentOrigin) return;
-    trustedTopOrigin = trustedParentOrigin;
-
-    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
-      scrollForwarding = true;
-      emitScroll();
-      return;
-    }
-
-    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
-      scrollForwarding = false;
-      if (scrollRaf) cancelAnimationFrame(scrollRaf);
-      scrollRaf = 0;
-      return;
-    }
-
-    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
-
-    handleCaptureRequest(event);
-  });
-})();
-
-
-</script></body>
+</body>
 </html>
