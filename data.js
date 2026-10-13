@@ -113,23 +113,23 @@ const TRACKS = {
     icon: '🔒',
     label: 'Cybersecurity',
     tagline: "One of Oklahoma's highest-demand fields — and Tulsa has a free fast-track",
-    demand: '27% projected growth; TCC Cyber Skills Center is a nationally recognized model',
+    demand: '27% projected growth; TCC Skills Lab offers free accelerated training in Tulsa',
     salaryEntry: '$65,000 – $80,000',
     salaryMid: '$90,000 – $110,000',
     salarySenior: '$125,000–$154,000+',
     timeToJob: '6–9 months',
-    description: 'The TCC Cyber Skills Center — funded by Google and the State of Oklahoma — is a 24-week, no-cost evening program. Tulsa Innovation Labs co-funds it and connects graduates to local employers.',
+    description: 'TCC Skills Lab offers free Residency (2–6 months) and Sprint (6–14 weeks) tracks, plus an 8-week Work-Integrated Learning Experience with a $1,000 stipend. Free to Oklahoma residents 18+; funded by the George Kaiser Family Foundation and the Oklahoma Workforce Commission.',
     roles: ['SOC Analyst', 'Information Security Analyst', 'Cybersecurity Engineer', 'Penetration Tester', 'GRC Analyst'],
     certs: ['CompTIA Security+', 'Google Cybersecurity Certificate', 'CompTIA Network+', 'CEH'],
     localPrograms: [
       {
-        name: 'TCC Cyber Skills Center — Cybersecurity Track',
+        name: 'TCC Skills Lab — Cybersecurity',
         provider: 'Tulsa Community College',
-        duration: '24 weeks, part-time evenings',
-        cost: 'Free (Google + State of Oklahoma funded)',
-        credential: 'TCC Certificate + Google Cybersecurity Certificate',
-        fit: 'No-cost, evening cohorts. Career changers and working adults. Job placement via SkillStorm.',
-        url: 'https://www.tulsacc.edu/academics/workforce-continuing-education/workforce-trainings/cyber-skills-center',
+        duration: 'Residency 2–6 months; Sprint 6–14 weeks; 8-week Work-Integrated Learning Experience',
+        cost: 'Free to Oklahoma residents 18+ ($1,000 stipend for the Work-Integrated Learning Experience)',
+        credential: 'Certificate / microcredential',
+        fit: 'Career changers and upskillers. Optional SkillStorm apprenticeship pathway after training.',
+        url: 'https://skillslab.tulsacc.edu/programs',
         highlight: true
       },
       {
@@ -154,7 +154,7 @@ const TRACKS = {
       }
     ],
     nextSteps: [
-      { text: 'Apply to TCC Cyber Skills Center — free, evenings, Tulsa', url: 'https://www.tulsacc.edu/academics/workforce-continuing-education/workforce-trainings/cyber-skills-center' },
+      { text: 'Apply to TCC Skills Lab — free cybersecurity training, Tulsa', url: 'https://skillslab.tulsacc.edu/programs' },
       { text: 'Explore Tulsa Innovation Labs workforce programs', url: 'https://www.tulsainnovationlabs.com' },
       { text: 'Earn CompTIA Security+ — the industry entry-level standard', url: 'https://www.comptia.org/certifications/security' },
       { text: 'Register with Tech Partners LLC as a candidate', url: 'https://techpartnersllc.com' }
@@ -232,18 +232,18 @@ const TRACKS = {
     salaryMid: '$80,000 – $105,000',
     salarySenior: '$110,000–$140,000+',
     timeToJob: '6–9 months',
-    description: "AI and data is the fastest-growing category across every industry. The TCC Cyber Skills Center has dedicated AI and Data Analytics tracks — both free and evenings. Oklahoma State Regents awarded $150K in AI micro-credential grants in 2025.",
+    description: "AI and data is the fastest-growing category across every industry. TCC Skills Lab has free Artificial Intelligence and Data Analytics tracks. Oklahoma State Regents awarded $150K in AI micro-credential grants in 2025.",
     roles: ['Data Analyst', 'Data Engineer', 'ML Engineer', 'AI / Automation Specialist', 'BI Analyst'],
     certs: ['Google Data Analytics Certificate', 'Google AI Essentials', 'Microsoft Power BI', 'AWS ML Specialty'],
     localPrograms: [
       {
-        name: 'TCC Cyber Skills Center — Data Analytics & AI Tracks',
+        name: 'TCC Skills Lab — Data Analytics & Artificial Intelligence',
         provider: 'Tulsa Community College',
-        duration: '24 weeks, part-time evenings',
-        cost: 'Free (Tulsa metro residents)',
-        credential: 'TCC Certificate + Google Data Analytics or AI Certificate',
-        fit: 'No-cost evening program. Two tracks: Data Analytics and Artificial Intelligence.',
-        url: 'https://www.tulsacc.edu/academics/workforce-continuing-education/workforce-trainings/cyber-skills-center',
+        duration: 'Residency 2–6 months; Sprint 6–14 weeks; 8-week Work-Integrated Learning Experience',
+        cost: 'Free to Oklahoma residents 18+ ($1,000 stipend for the Work-Integrated Learning Experience)',
+        credential: 'Certificate / microcredential',
+        fit: 'Free Data Analytics and Artificial Intelligence tracks; next step can be the TCC Data Analytics A.S.',
+        url: 'https://skillslab.tulsacc.edu/programs',
         highlight: true
       },
       {
@@ -268,7 +268,7 @@ const TRACKS = {
       }
     ],
     nextSteps: [
-      { text: 'Apply to TCC Cyber Skills Center — AI or Data Analytics track (free)', url: 'https://www.tulsacc.edu/academics/workforce-continuing-education/workforce-trainings/cyber-skills-center' },
+      { text: 'Apply to TCC Skills Lab — AI or Data Analytics track (free)', url: 'https://skillslab.tulsacc.edu/programs' },
       { text: 'Search UpskillOK for AI microcredentials (stackable, statewide)', url: 'https://upskillok.org' },
       { text: 'Start the Google Data Analytics Certificate (free via OSU/OU)', url: 'https://grow.google/certificates/' },
       { text: 'Register with Tech Partners LLC as a candidate', url: 'https://techpartnersllc.com' }
@@ -289,7 +289,7 @@ const TRACKS = {
     salaryMid: '$90,000 – $115,000',
     salarySenior: '$120,000–$160,000+',
     timeToJob: '12–20 months',
-    description: "Atlas School (formerly Holberton Tulsa) is downtown Tulsa's flagship software engineering program — 20 months, project-based, no payment until you're hired. Graduates land roles nationally.",
+    description: "Atlas School (formerly Holberton Tulsa) is downtown Tulsa's flagship software engineering program — 20 months, project-based, $5,005 total tuition. Graduates land roles nationally.",
     roles: ['Software Engineer / Full-Stack Developer', 'Frontend Developer', 'Backend Developer', 'Mobile Developer', 'DevOps / SRE'],
     certs: ['AWS Certified Developer', 'Google Associate Cloud Engineer', 'MongoDB Developer'],
     localPrograms: [
@@ -297,7 +297,7 @@ const TRACKS = {
         name: 'Atlas School — Software Engineering',
         provider: 'Atlas School (formerly Holberton Tulsa)',
         duration: '20 months',
-        cost: 'Income share: 10% of income for 3.5 years after employment. No payment until hired.',
+        cost: '$5,005 total tuition for the 20-month program ($71.50 per credit hour). Not eligible for federal student aid.',
         credential: 'Atlas School Diploma + specialization (ML, Full-Stack, or Linux/Algorithms)',
         fit: 'The deepest local program. No upfront cost. Project-based, peer-learning. 18+ with HS diploma.',
         url: 'https://atlasschool.com',
@@ -315,7 +315,7 @@ const TRACKS = {
       }
     ],
     nextSteps: [
-      { text: 'Apply to Atlas School — no payment until you are employed', url: 'https://atlasschool.com' },
+      { text: 'Apply to Atlas School — 20 months, $5,005 total tuition', url: 'https://atlasschool.com' },
       { text: 'Preview the field with Google Career Certificates (free via OSU/OU)', url: 'https://grow.google/certificates/' },
       { text: 'Explore Tulsa Innovation Labs tech community and events', url: 'https://www.tulsainnovationlabs.com' },
       { text: 'Register with Tech Partners LLC as a candidate', url: 'https://techpartnersllc.com' }
